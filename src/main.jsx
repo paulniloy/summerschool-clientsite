@@ -15,6 +15,13 @@ import Private from "./com/Privateroute/Private";
 import Class from "./com/Classes/Class";
 import Instructor from "./com/Instructors/Instructor";
 import Dash from "./com/Dashboard/Dash";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 
 const router = createBrowserRouter([
   {
@@ -51,10 +58,14 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Auth>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </Auth>
   </React.StrictMode>
 );

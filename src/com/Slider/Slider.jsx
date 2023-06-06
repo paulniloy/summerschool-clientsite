@@ -31,11 +31,11 @@ const Slider = () => {
             <img src="https://educamp.bju.edu/images/camps/_1000xAUTO_crop_center-center/20160714jr-music-de02.jpg" alt="" /></SwiperSlide>
         <SwiperSlide className='flex-col'><Slidertext heading={'Piano'} info={"Enhance your Piano skill"} message={'From 2pm to 4pm'}></Slidertext>
             <img src="https://www.musiclifestyle.sg/pub/media/magefan_blog/blog2.jpg" alt="" /></SwiperSlide>
-        <SwiperSlide className='flex-col'>Slide 5</SwiperSlide>
+        {/* <SwiperSlide className='flex-col'>Slide 5</SwiperSlide>
         <SwiperSlide className='flex-col'>Slide 6</SwiperSlide>
         <SwiperSlide className='flex-col'>Slide 7</SwiperSlide>
         <SwiperSlide className='flex-col'>Slide 8</SwiperSlide>
-        <SwiperSlide className='flex-col'>Slide 9</SwiperSlide>
+        <SwiperSlide className='flex-col'>Slide 9</SwiperSlide> */}
       </Swiper>
         </div>
     );

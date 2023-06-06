@@ -3,6 +3,7 @@ import title from '../../Hooks/title';
 import Headings from '../Headings/Headings';
 import Slider from '../Slider/Slider';
 import banner from "../../assets/banner music.jpg"
+import Popclass from '../popclasses/Popclass';
 
 const Home = () => {
     title("Home")
@@ -21,6 +22,9 @@ const Home = () => {
             </div>
             <Headings heading={"Pictures"} subheading={"Music Art"}></Headings>
             <Slider></Slider>
+            <Headings heading={"Popular Classes"} subheading={"Instruments"}></Headings>
+            <Popclass></Popclass>
+            <Headings heading={"Popular Instructors"} subheading={"Music Category"}></Headings>
         </div>
     );
 };

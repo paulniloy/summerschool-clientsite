@@ -37,7 +37,7 @@ const Nav = () => {
 
 
     return (
-        <div className='p-5 bg-gray-200'>
+        <div className='p-5 bg-gray-200 fixed w-full z-10'>
             <div className="navbar">
                 <div className="navbar-start">
                     <img className='w-40' src="https://media-s3-us-east-1.ceros.com/granicus/images/2021/05/06/7638e39ee1731aaaa0206ccaa876014e/logo-summerschool-series1.png" alt="Logo" />
