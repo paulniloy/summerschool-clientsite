@@ -9,6 +9,17 @@ import { FaGoogle } from "react-icons/fa";
 // import API from '../json/axios';
 
 const Login = () => {
+    
+    const [checked, setchecked] =useState(false);
+
+    const handlecheck = event =>{
+        if(event.target.checked){
+            setchecked(true)
+        }
+        else(
+            setchecked(false)
+        )
+    }
 
     const location = useLocation();
     console.log(location);
@@ -17,7 +28,8 @@ const Login = () => {
     const [success, setsuccess] = useState('');
     const [error, seterror] = useState('');
 
-    const { google, signin } = useContext(Authcontext)
+    const { google, signin } = useContext(Authcontext);
+
 
 
     const navigate = useNavigate();
@@ -48,6 +60,7 @@ const Login = () => {
 
     const handlelogin = (event) => {
         event.preventDefault()
+        // console.log(event.target.check.checked);
         const form = event.target
         const email = form.email.value;
         const password = form.password.value;
@@ -92,7 +105,8 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" name='password' className="input input-bordered" />
+                                    <input type={checked ? "text" : "password" } placeholder="password" name='password' className="input input-bordered" />
+                                    <p className='mt-2'><input onClick={handlecheck}  type="checkbox" name="check" id="" /> Show password</p>
                                     <label className="label">
                                         <div>Not have account? <Link className="link link-info" to={"/register"}>Register Now</Link></div>
                                     </label>

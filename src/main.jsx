@@ -12,6 +12,9 @@ import Register from "./com/Register/Register";
 import Auth from "./com/Authprovider/Auth";
 import About from "./com/About/About";
 import Private from "./com/Privateroute/Private";
+import Class from "./com/Classes/Class";
+import Instructor from "./com/Instructors/Instructor";
+import Dash from "./com/Dashboard/Dash";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +35,17 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path: "/about",
-        element: <Private><About></About></Private>
+        path: "/classes",
+        element: <Class></Class>
+      },
+      {
+        path: "/instructors",
+        element: <Instructor></Instructor>
+      }
+      ,
+      {
+        path: "/dash",
+        element: <Dash></Dash>
       }
     ]
   },

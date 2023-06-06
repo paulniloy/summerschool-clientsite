@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import pic from "../../../public/tree-736885_1280 (1).jpg"
 import { Authcontext } from '../Authprovider/Auth';
 import Swal from 'sweetalert2';
 
@@ -17,8 +16,9 @@ const Nav = () => {
     const navcenter =
         <>
             <Link to={"/"}>Home</Link>
-            <Link to={"/"}>Portfolio</Link>
-            <Link to={"/about"}>About</Link>
+            <Link to={"/instructors"}>Instructors</Link>
+            <Link to={"/classes"}>Classes</Link>
+            <Link to={"/dash"}>Dashboard</Link>
             <div>
                 {
                     loggeduser ? 
@@ -40,7 +40,7 @@ const Nav = () => {
         <div className='p-5 bg-gray-200'>
             <div className="navbar">
                 <div className="navbar-start">
-                    <img className='w-20' src={pic} alt="Logo" />
+                    <img className='w-40' src="https://media-s3-us-east-1.ceros.com/granicus/images/2021/05/06/7638e39ee1731aaaa0206ccaa876014e/logo-summerschool-series1.png" alt="Logo" />
                     <div className="dropdown visible md:invisible">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
