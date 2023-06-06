@@ -15,10 +15,10 @@ const Nav = () => {
 
     const navcenter =
         <>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/instructors"}>Instructors</Link>
-            <Link to={"/classes"}>Classes</Link>
-            <Link to={"/dash"}>Dashboard</Link>
+            <Link className='btn' to={"/"}>Home</Link>
+            <Link className='btn' to={"/instructors"}>Instructors</Link>
+            <Link className='btn' to={"/classes"}>Classes</Link>
+            <Link className='btn' to={"/dash"}>Dashboard</Link>
             <div>
                 {
                     loggeduser ? 
@@ -31,13 +31,13 @@ const Nav = () => {
                 }
             </div>
             {
-                loggeduser ? <Link to={"/login"} onClick={handlelogout}>Logout</Link> : <Link to={"/login"}>Login</Link>
+                loggeduser ? <Link  to={"/login"} onClick={handlelogout} className='btn'>Logout</Link> : <Link className='btn' to={"/login"}>Login</Link>
             }
         </>
 
 
     return (
-        <div className='p-5 bg-gray-200 fixed w-full z-10'>
+        <div className='p-5 bg-gray-400 fixed w-full z-10'>
             <div className="navbar">
                 <div className="navbar-start">
                     <img className='w-40' src="https://media-s3-us-east-1.ceros.com/granicus/images/2021/05/06/7638e39ee1731aaaa0206ccaa876014e/logo-summerschool-series1.png" alt="Logo" />
