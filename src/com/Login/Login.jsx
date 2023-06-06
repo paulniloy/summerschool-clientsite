@@ -97,7 +97,7 @@ const Login = () => {
                             <form onSubmit={handlelogin}>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Email</span>
+                                        <span required className="label-text">Email</span>
                                     </label>
                                     <input type="text" placeholder="email" name='email' className="input input-bordered" />
                                 </div>
@@ -105,7 +105,7 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type={checked ? "text" : "password" } placeholder="password" name='password' className="input input-bordered" />
+                                    <input required type={checked ? "text" : "password" } placeholder="password" name='password' className="input input-bordered" />
                                     <p className='mt-2'><input onClick={handlecheck}  type="checkbox" name="check" id="" /> Show password</p>
                                     <label className="label">
                                         <div>Not have account? <Link className="link link-info" to={"/register"}>Register Now</Link></div>

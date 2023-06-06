@@ -7,6 +7,8 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
     title("Registartion")
+    const [letconfirm, setletconfirm] = useState(false)
+    const [confirmdisabled, setconfirmdisabled] = useState(true)
     const [pass, setpass] = useState(null)
     const [confirm, setconfirm] =useState(true);
     const [success, setsuccess] = useState('');
@@ -19,12 +21,18 @@ const Register = () => {
         e.preventDefault()
         const passed = e.target.value;
         setpass(passed)
+        setletconfirm(true)
+        if(passed){
+            setconfirmdisabled(false)
+        }
+        else{
+            setconfirmdisabled(true)
+        }
     }
 
     const handleconfirm = e => {
         e.preventDefault()
         // sethandlechange()
-        console.log(handlechange, pass);
         if(e.target.value == pass) {
             setconfirm(false)
         }
@@ -42,6 +50,14 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, picture);
         console.log(email, password);
+        if(!/(?=.*[A-Z])(?=.*[!@#$&*]).{6}/.test(password)){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "add atleast a capital character and a special character",
+            })
+            return;
+        }
         register(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -74,7 +90,7 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="text" placeholder="email" name='email' className="input input-bordered" />
+                                    <input required type="text" placeholder="email" name='email' className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
@@ -92,13 +108,13 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input onChange={handlepassword} type="password" placeholder="password" name='password' className="input input-bordered" />
+                                    <input required onChange={handlepassword} type="password" placeholder="password" name='password' className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Confirm Password</span>
                                     </label>
-                                    <input onKeyUp={handleconfirm} type="password" placeholder="password" name='confirm' className="input input-bordered" />
+                                    <input disabled={confirmdisabled} onKeyUp={handleconfirm} type="password" placeholder="password" name='confirm' className="input input-bordered" />
                                 </div>
                                 <p>Already Have an account? <Link className="link link-info" to={"/login"}>Login</Link></p>
                                 <div className="form-control mt-6">
