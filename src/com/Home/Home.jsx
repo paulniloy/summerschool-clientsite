@@ -4,6 +4,7 @@ import Headings from '../Headings/Headings';
 import Slider from '../Slider/Slider';
 import banner from "../../assets/banner music.jpg"
 import Popclass from '../popclasses/Popclass';
+import Popinstructors from '../Popularinstructors/Popinstructors';
 
 const Home = () => {
     title("Home")
@@ -25,6 +26,7 @@ const Home = () => {
             <Headings heading={"Popular Classes"} subheading={"Instruments"}></Headings>
             <Popclass></Popclass>
             <Headings heading={"Popular Instructors"} subheading={"Music Category"}></Headings>
+            <Popinstructors></Popinstructors>
         </div>
     );
 };

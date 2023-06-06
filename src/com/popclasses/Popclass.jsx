@@ -16,13 +16,14 @@ const Popclass = () => {
         <div className='grid grid-cols-3 gap-10 justify-items-center align-center'>
             {
                 classes.map(dt=>
-                    <div className="card w-96 bg-base-100 shadow-xl">
-                    <figure><img className='w-40' src={dt.image} alt="Shoes" /></figure>
+                    <div className="card w-96 bg-base-100 shadow-xl m-10">
+                    <figure><img className='w-40 rounded-xl' src={dt.image} alt="Shoes" /></figure>
                     <div className="card-body">
                       <h2 className="card-title">
                         {dt.music_name}
                         <div className="badge badge-secondary">Popular</div>
                       </h2>
+                        <h3 className='italic font-medium'>Total students : {dt.students}</h3>
                       <p>{dt.activities.map(list=><li>{list}</li>)}</p>
                     </div>
                   </div>
