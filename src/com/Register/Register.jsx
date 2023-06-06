@@ -7,12 +7,31 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
     title("Registartion")
-
+    const [pass, setpass] = useState(null)
+    const [confirm, setconfirm] =useState(true);
     const [success, setsuccess] = useState('');
     const [error, seterror] = useState('');
-
+    
     const { register, profileupdate } = useContext(Authcontext);
     const navigate = useNavigate()
+    
+    const handlepassword = e =>{
+        e.preventDefault()
+        const passed = e.target.value;
+        setpass(passed)
+    }
+
+    const handleconfirm = e => {
+        e.preventDefault()
+        // sethandlechange()
+        console.log(handlechange, pass);
+        if(e.target.value == pass) {
+            setconfirm(false)
+        }
+        else(
+            setconfirm(true)
+        )
+    }
 
     const handleregister = event => {
         event.preventDefault()
@@ -73,11 +92,17 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="password" name='password' className="input input-bordered" />
+                                    <input onChange={handlepassword} type="password" placeholder="password" name='password' className="input input-bordered" />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Confirm Password</span>
+                                    </label>
+                                    <input onKeyUp={handleconfirm} type="password" placeholder="password" name='confirm' className="input input-bordered" />
                                 </div>
                                 <p>Already Have an account? <Link className="link link-info" to={"/login"}>Login</Link></p>
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-primary" type='submit'>Register</button>
+                                    <button className="btn btn-primary" disabled={confirm} type='submit'>Register</button>
                                 </div>
                                 <div>
                                     {success}
