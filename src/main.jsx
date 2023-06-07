@@ -24,6 +24,8 @@ import {
 } from 'react-query';
 import Error from "./com/Error/Error";
 import AdminDash from "./com/Dashboard/AdminDash";
+import Manageuser from "./com/instructoruser/Manageuser";
+import Tableusers from "./com/Tableusers/Tableusers";
 
 const router = createBrowserRouter([
   {
@@ -51,10 +53,23 @@ const router = createBrowserRouter([
         path: "/instructors",
         element: <Instructor></Instructor>
       }
-      ,
+    ]
+  },
+  {
+    path: "/admindash",
+    element: <AdminDash></AdminDash>,
+    children: [
       {
-        path: "/admindash",
-        element: <AdminDash></AdminDash>
+        path : '/admindash',
+        element : <Manageuser></Manageuser>
+       },
+      {
+        path : "/admindash/manage",
+        element : <Tableusers></Tableusers>
+      },
+      {
+        path : "/admindash/bye",
+        element : <div>hello therer</div>
       }
     ]
   },

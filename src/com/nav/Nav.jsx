@@ -28,12 +28,16 @@ const Nav = () => {
         })
     }
 
+    const [isadmin,serisadmin] = useState(true);
     const navcenter =
         <>
             <Link className='btn' to={"/"}>Home</Link>
             <Link className='btn' to={"/instructors"}>Instructors</Link>
             <Link className='btn' to={"/classes"}>Classes</Link>
-            <Link className='btn' to={"/admindash"}>Dashboard</Link>
+            {/* <Link className='btn' to={"/admindash"}>Dashboard</Link> */}
+            {
+                isadmin ? <Link className='btn' to={"/admindash"}>Admin Dashboard</Link>  : ""
+            }
             <div>
                 {
                     loggeduser ? 
@@ -56,8 +60,8 @@ const Nav = () => {
 
     return (
         <div className='p-5 bg-gray-400 w-full z-10 home'>
-            <div className="navbar">
-                <div className="navbar-start">
+            <div className="navbar flex justify-between">
+                <div className="w-[400px]">
                     <img className='w-40' src="https://media-s3-us-east-1.ceros.com/granicus/images/2021/05/06/7638e39ee1731aaaa0206ccaa876014e/logo-summerschool-series1.png" alt="Logo" />
                     <div className="dropdown visible md:invisible">
                         <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -68,10 +72,10 @@ const Nav = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="navbar-end gap-20 invisible md:visible">
+                <div className=" gap-5 invisible md:visible">
                     {navcenter}
-                </div>
                 <input onClick={istoggle} type="checkbox" className="toggle" checked={ischecked} />
+                </div>
             </div>
         </div>
     );
