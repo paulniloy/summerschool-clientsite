@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Bounce } from 'react-awesome-reveal';
 import { useQuery } from 'react-query';
 
 const Tableusers = () => {
@@ -53,6 +54,7 @@ const Tableusers = () => {
     return (
         <div>
             <div className="overflow-x-auto">
+                <Bounce>
                 <table className="table">
                     <thead>
                         <tr>
@@ -99,6 +101,7 @@ const Tableusers = () => {
                         }
                     </tbody>
                 </table>
+                </Bounce>
             </div>
         </div>
     );

@@ -10,6 +10,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Authcontext } from '../Authprovider/Auth';
+import { Bounce, Fade } from "react-awesome-reveal";
 
 const Home = () => {
     title("Home")
@@ -17,15 +18,17 @@ const Home = () => {
         AOS.init();
     }, [])
 
-    const {color} = useContext(Authcontext);
+    const { color } = useContext(Authcontext);
     console.log(color);
 
 
     return (
-        <div className={color ? 'bg-white text-black' : 'bg-black text-white'}>
+        <div className={color ? 'bg-white text-black' : 'bg-gray-800 text-white'}>
             <div data-aos="fade-left" className="hero min-h-screen  ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
+                    <Fade>
                     <img src="https://wpe.hoffmanacademy.com/wp-content/uploads/2021/06/make-summer-of-music.jpg" className="max-w-sm rounded-lg shadow-2xl" />
+                    </Fade>
                     <div>
                         <h1 className="text-5xl font-bold">   <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'bold' }}>
                             Welcome to {' '}
@@ -42,9 +45,11 @@ const Home = () => {
                                 />
                             </span>
                         </h1></h1>
-                        <p className="py-6 italic font-bold">Welcome to our Music Summer School! We are thrilled to have you join us for an incredible musical journey filled with learning, creativity, and inspiration. Our aim is to provide you with a supportive and enriching environment where you can explore your passion for music and further develop your skills.
+                        <Bounce>
+                            <p className="py-6 italic font-bold">Welcome to our Music Summer School! We are thrilled to have you join us for an incredible musical journey filled with learning, creativity, and inspiration. Our aim is to provide you with a supportive and enriching environment where you can explore your passion for music and further develop your skills.
 
-                            As you step into our vibrant musical community, you'll be greeted by a diverse group of fellow musicians who share your love for music. Whether you're an aspiring instrumentalist, vocalist, composer, or simply a music enthusiast, our program is designed to cater to all levels of expertise and interests.</p>
+                                As you step into our vibrant musical community, you'll be greeted by a diverse group of fellow musicians who share your love for music. Whether you're an aspiring instrumentalist, vocalist, composer, or simply a music enthusiast, our program is designed to cater to all levels of expertise and interests.</p>
+                        </Bounce>
                     </div>
                 </div>
             </div>
@@ -54,10 +59,10 @@ const Home = () => {
             <Popclass></Popclass>
             <Headings heading={"Popular Instructors"} subheading={"Music Category"}></Headings>
             <Popinstructors></Popinstructors>
-            <div  className='flex justify-center'>
+            <div className='flex justify-center'>
                 <div data-aos="fade-up" className="stats shadow p-10">
 
-                    <div  className="stat">
+                    <div className="stat">
                         <div className="stat-figure text-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
