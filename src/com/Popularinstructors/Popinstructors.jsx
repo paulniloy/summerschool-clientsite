@@ -14,7 +14,7 @@ const Popinstructors = () => {
         <div className='grid grid-cols-3 gap-10 justify-items-center align-center m-10'>
             {
                 instructors.map(ins=>
-                    <div className="card w-96 bg-base-100 shadow-xl">
+                    <div data-aos="fade-up" className="card w-96 bg-red-400 p-5 text-black shadow-xl">
                     <figure><img className='w-40 rounded-xl' src={ins.image} alt="Shoes" /></figure>
                     <div className="card-body">
                       <h2 className="card-title">

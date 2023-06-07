@@ -5,17 +5,23 @@ import Swal from 'sweetalert2';
 
 const Nav = () => {
 
-    const [ischecked, setischecked] = useState(false)
+    const { color,setcolor} = useContext(Authcontext);
+
+    const [ischecked, setischecked] = useState(true)
     const istoggle = (event) => {
         const checked = event.target.checked;
             if(checked){
                 setischecked(!ischecked)
+                console.log('true');
+                setcolor(false)
             }
             else{
                 setischecked(!ischecked)
                 console.log('false');
+                setcolor(true)
             }
     }
+
 
 
     const {loggeduser, logout, username, photourl} = useContext(Authcontext);

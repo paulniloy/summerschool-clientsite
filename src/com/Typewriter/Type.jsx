@@ -14,7 +14,7 @@ const Type = () => {
 
 
     return (
-        <div className='text-4xl m-5 text-center font-bold'>
+        <div data-aos="fade-up" className='text-4xl p-10 text-center font-bold '>
            <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'normal' }}>
         Life is simple just do{' '}
         <span style={{ color: 'red', fontWeight: 'bold' }}>

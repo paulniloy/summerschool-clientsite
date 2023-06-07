@@ -9,7 +9,7 @@ import Homepage from "./com/Homepage/Homepage";
 import Login from "./com/Login/Login";
 import Home from "./com/Home/Home";
 import Register from "./com/Register/Register";
-import Auth from "./com/Authprovider/Auth";
+import Auth, { Authcontext } from "./com/Authprovider/Auth";
 import About from "./com/About/About";
 import Private from "./com/Privateroute/Private";
 import Class from "./com/Classes/Class";
@@ -26,6 +26,8 @@ import Error from "./com/Error/Error";
 import AdminDash from "./com/Dashboard/AdminDash";
 import Manageuser from "./com/instructoruser/Manageuser";
 import Tableusers from "./com/Tableusers/Tableusers";
+import { useState } from "react";
+import { useContext } from "react";
 
 const router = createBrowserRouter([
   {
@@ -60,32 +62,33 @@ const router = createBrowserRouter([
     element: <AdminDash></AdminDash>,
     children: [
       {
-        path : '/admindash',
-        element : <Manageuser></Manageuser>
-       },
-      {
-        path : "/admindash/manage",
-        element : <Tableusers></Tableusers>
+        path: '/admindash',
+        element: <Manageuser></Manageuser>
       },
       {
-        path : "/admindash/bye",
-        element : <div>hello therer</div>
+        path: "/admindash/manage",
+        element: <Tableusers></Tableusers>
+      },
+      {
+        path: "/admindash/bye",
+        element: <div>hello therer</div>
       }
     ]
   },
   {
-    path : "*",
-    element : <Error></Error>
+    path: "*",
+    element: <Error></Error>
   }
 ]);
 
 const queryClient = new QueryClient()
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Auth>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+          <RouterProvider router={router} />
       </QueryClientProvider>
     </Auth>
   </React.StrictMode>

@@ -25,11 +25,14 @@ const Slider = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide className='flex-col'><Slidertext heading={'Guitar'} message={"From 10am to 12pm"} info={'Enhance the guitar skill'}></Slidertext>
+        <SwiperSlide className='flex-col'>
+          <Slidertext heading={'Guitar'} message={"From 10am to 12pm"} info={'Enhance the guitar skill'}></Slidertext>
             <img src="https://www.cityguideny.com/columnpic2/music-camp1.jpg" alt="" /></SwiperSlide>
-        <SwiperSlide className='flex-col'><Slidertext heading={'Saxophone'} message={"From 12pm to 2pm"} info={'Enhance your saxophone skill'}></Slidertext>
+        <SwiperSlide className='flex-col'>
+          <Slidertext heading={'Saxophone'} message={"From 12pm to 2pm"} info={'Enhance your saxophone skill'}></Slidertext>
             <img src="https://educamp.bju.edu/images/camps/_1000xAUTO_crop_center-center/20160714jr-music-de02.jpg" alt="" /></SwiperSlide>
-        <SwiperSlide className='flex-col'><Slidertext heading={'Piano'} info={"Enhance your Piano skill"} message={'From 2pm to 4pm'}></Slidertext>
+        <SwiperSlide className='flex-col'>
+          <Slidertext heading={'Piano'} info={"Enhance your Piano skill"} message={'From 2pm to 4pm'}></Slidertext>
             <img src="https://www.musiclifestyle.sg/pub/media/magefan_blog/blog2.jpg" alt="" /></SwiperSlide>
         {/* <SwiperSlide className='flex-col'>Slide 5</SwiperSlide>
         <SwiperSlide className='flex-col'>Slide 6</SwiperSlide>

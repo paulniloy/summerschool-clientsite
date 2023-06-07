@@ -6,6 +6,7 @@ export const Authcontext = createContext(null);
 const Auth = ({children}) => {
     const auth = getAuth(app);
 
+    const [color, setcolor] = useState(null)
     const [loggeduser, setloggeduser] = useState('');
     const [username, setusername] = useState('');
     const [photourl, setphotourl] = useState('');
@@ -68,7 +69,7 @@ const Auth = ({children}) => {
 
 
     const authinfo = {
-        google, useremail, signin, register, profileupdate, loggeduser, username, photourl, logout, loader
+        google, useremail, color, setcolor, signin, register, profileupdate, loggeduser, username, photourl, logout, loader
     }
 
     return (

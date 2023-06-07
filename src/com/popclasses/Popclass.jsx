@@ -16,7 +16,7 @@ const Popclass = () => {
         <div className='grid grid-cols-3 gap-10 justify-items-center align-center'>
             {
                 classes.map(dt=>
-                    <div className="card w-96 bg-base-100 shadow-xl m-10">
+                    <div data-aos="fade-bottom" className="card w-96 bg-yellow-400 p-5 text-black shadow-xl m-10">
                     <figure><img className='w-40 rounded-xl' src={dt.image} alt="Shoes" /></figure>
                     <div className="card-body">
                       <h2 className="card-title">

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import title from '../../Hooks/title';
 import Headings from '../Headings/Headings';
 import Slider from '../Slider/Slider';
@@ -9,15 +9,21 @@ import Type from '../Typewriter/Type';
 import { Typewriter } from 'react-simple-typewriter';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Authcontext } from '../Authprovider/Auth';
 
 const Home = () => {
     title("Home")
     useEffect(() => {
         AOS.init();
     }, [])
+
+    const {color} = useContext(Authcontext);
+    console.log(color);
+
+
     return (
-        <div>
-            <div data-aos="fade-left" className="hero min-h-screen bg-base-200 ">
+        <div className={color ? 'bg-white text-black' : 'bg-black text-white'}>
+            <div data-aos="fade-left" className="hero min-h-screen  ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <img src="https://wpe.hoffmanacademy.com/wp-content/uploads/2021/06/make-summer-of-music.jpg" className="max-w-sm rounded-lg shadow-2xl" />
                     <div>
@@ -42,16 +48,16 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Headings data-aos="fade-left" heading={"Pictures"} subheading={"Music Art"}></Headings>
+            <Headings heading={"Pictures"} subheading={"Music Art"}></Headings>
             <Slider></Slider>
-            <Headings data-aos="fade-left" heading={"Popular Classes"} subheading={"Instruments"}></Headings>
+            <Headings heading={"Popular Classes"} subheading={"Instruments"}></Headings>
             <Popclass></Popclass>
-            <Headings data-aos="fade-left" heading={"Popular Instructors"} subheading={"Music Category"}></Headings>
+            <Headings heading={"Popular Instructors"} subheading={"Music Category"}></Headings>
             <Popinstructors></Popinstructors>
-            <div className='flex justify-center'>
-                <div className="stats shadow ">
+            <div  className='flex justify-center'>
+                <div data-aos="fade-up" className="stats shadow p-10">
 
-                    <div className="stat">
+                    <div  className="stat">
                         <div className="stat-figure text-secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
