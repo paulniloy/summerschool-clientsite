@@ -4,7 +4,22 @@ import { Authcontext } from '../Authprovider/Auth';
 import Swal from 'sweetalert2';
 
 const Nav = () => {
+
+    const [ischecked, setischecked] = useState(false)
+    const istoggle = (event) => {
+        const checked = event.target.checked;
+            if(checked){
+                setischecked(!ischecked)
+            }
+            else{
+                setischecked(!ischecked)
+                console.log('false');
+            }
+    }
+
+
     const {loggeduser, logout, username, photourl} = useContext(Authcontext);
+    console.log(photourl, username, loggeduser);
 
     const handlelogout = () => {
         logout()
@@ -18,7 +33,7 @@ const Nav = () => {
             <Link className='btn' to={"/"}>Home</Link>
             <Link className='btn' to={"/instructors"}>Instructors</Link>
             <Link className='btn' to={"/classes"}>Classes</Link>
-            <Link className='btn' to={"/dash"}>Dashboard</Link>
+            <Link className='btn' to={"/admindash"}>Dashboard</Link>
             <div>
                 {
                     loggeduser ? 
@@ -26,10 +41,13 @@ const Nav = () => {
                     <img className='rounded-full w-10' src={photourl} />
                     </div>
                      : <div className="tooltip tooltip-bottom tooltip-error" data-tip={"User not logged in"}>
-                        <div>User</div>
+                        <div>No User</div>
                      </div>
                 }
             </div>
+            {
+                // <img src={photourl} alt="" srcset="" />
+            }
             {
                 loggeduser ? <Link  to={"/login"} onClick={handlelogout} className='btn'>Logout</Link> : <Link className='btn' to={"/login"}>Login</Link>
             }
@@ -37,7 +55,7 @@ const Nav = () => {
 
 
     return (
-        <div className='p-5 bg-gray-400 fixed w-full z-10'>
+        <div className='p-5 bg-gray-400 w-full z-10 home'>
             <div className="navbar">
                 <div className="navbar-start">
                     <img className='w-40' src="https://media-s3-us-east-1.ceros.com/granicus/images/2021/05/06/7638e39ee1731aaaa0206ccaa876014e/logo-summerschool-series1.png" alt="Logo" />
@@ -53,6 +71,7 @@ const Nav = () => {
                 <div className="navbar-end gap-20 invisible md:visible">
                     {navcenter}
                 </div>
+                <input onClick={istoggle} type="checkbox" className="toggle" checked={ischecked} />
             </div>
         </div>
     );

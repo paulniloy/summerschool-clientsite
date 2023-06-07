@@ -14,7 +14,7 @@ import About from "./com/About/About";
 import Private from "./com/Privateroute/Private";
 import Class from "./com/Classes/Class";
 import Instructor from "./com/Instructors/Instructor";
-import Dash from "./com/Dashboard/Dash";
+import Dash from "./com/Dashboard/AdminDash";
 import {
   useQuery,
   useMutation,
@@ -22,6 +22,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
+import Error from "./com/Error/Error";
+import AdminDash from "./com/Dashboard/AdminDash";
 
 const router = createBrowserRouter([
   {
@@ -51,11 +53,15 @@ const router = createBrowserRouter([
       }
       ,
       {
-        path: "/dash",
-        element: <Dash></Dash>
+        path: "/admindash",
+        element: <AdminDash></AdminDash>
       }
     ]
   },
+  {
+    path : "*",
+    element : <Error></Error>
+  }
 ]);
 
 const queryClient = new QueryClient()

@@ -10,22 +10,22 @@ const Register = () => {
     const [letconfirm, setletconfirm] = useState(false)
     const [confirmdisabled, setconfirmdisabled] = useState(true)
     const [pass, setpass] = useState(null)
-    const [confirm, setconfirm] =useState(true);
+    const [confirm, setconfirm] = useState(true);
     const [success, setsuccess] = useState('');
     const [error, seterror] = useState('');
-    
+
     const { register, profileupdate } = useContext(Authcontext);
     const navigate = useNavigate()
-    
-    const handlepassword = e =>{
+
+    const handlepassword = e => {
         e.preventDefault()
         const passed = e.target.value;
         setpass(passed)
         setletconfirm(true)
-        if(passed){
+        if (passed) {
             setconfirmdisabled(false)
         }
-        else{
+        else {
             setconfirmdisabled(true)
         }
     }
@@ -33,10 +33,10 @@ const Register = () => {
     const handleconfirm = e => {
         e.preventDefault()
         // sethandlechange()
-        if(e.target.value == pass) {
+        if (e.target.value == pass) {
             setconfirm(false)
         }
-        else(
+        else (
             setconfirm(true)
         )
     }
@@ -50,7 +50,10 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, picture);
         console.log(email, password);
-        if(!/(?=.*[A-Z])(?=.*[!@#$&*]).{6}/.test(password)){
+        const instructordata = {
+            name, email, picture
+        }
+        if (!/(?=.*[A-Z])(?=.*[!@#$&*]).{6}/.test(password)) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -58,26 +61,39 @@ const Register = () => {
             })
             return;
         }
-        register(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                profileupdate(name, picture);
-                setsuccess('Successfully registered');
-                seterror('')
-                Swal.fire('Successfully Registered and Logged in')
-                navigate("/");
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: error.message,
+        else {
+            register(email, password)
+                .then((userCredential) => {
+                    const instructors = {
+                        name, picture, email
+                    }
+                    const user = userCredential.user;
+                    profileupdate(name, picture)
+                    fetch("http://localhost:3000/instructors", {
+                        method : "POST",
+                        headers : {
+                            'content-type' : 'application/json'
+                        },
+                        body : JSON.stringify(instructors)
+                    })
+                    setsuccess('Successfully registered');
+                    seterror('')
+                    Swal.fire('Successfully Registered and Logged in');
+                    navigate("/");
                 })
-                seterror(errorMessage);
-                setsuccess('');
-            });
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: error.message,
+                    })
+                    seterror(errorMessage);
+                    setsuccess('');
+                });
+        }
+
     }
     return (
         <div>
@@ -126,7 +142,7 @@ const Register = () => {
                                 <div>
                                     {error}
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>

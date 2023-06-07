@@ -1,7 +1,7 @@
 import React from 'react';
 import title from '../../Hooks/title';
 
-const Dash = () => {
+const AdminDash = () => {
     title("Dashboard")
     return (
         <div>
@@ -10,4 +10,4 @@ const Dash = () => {
     );
 };
 
-export default Dash;
+export default AdminDash;
