@@ -9,14 +9,15 @@ import { FaGoogle } from "react-icons/fa";
 // import API from '../json/axios';
 
 const Login = () => {
-    
-    const [checked, setchecked] =useState(false);
+    const { google, signin, username, useremail, photourl } = useContext(Authcontext);
 
-    const handlecheck = event =>{
-        if(event.target.checked){
+    const [checked, setchecked] = useState(false);
+
+    const handlecheck = event => {
+        if (event.target.checked) {
             setchecked(true)
         }
-        else(
+        else (
             setchecked(false)
         )
     }
@@ -28,7 +29,6 @@ const Login = () => {
     const [success, setsuccess] = useState('');
     const [error, seterror] = useState('');
 
-    const { google, signin } = useContext(Authcontext);
 
 
 
@@ -40,10 +40,21 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const user = result.user;
+                const instructorsdata = {
+                    name : username, email : useremail, picture : photourl 
+                }
+                fetch("http://localhost:3000/instructors", {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(instructorsdata)
+                });
                 navigate(from)
                 setsuccess('Successfully signed in');
                 Swal.fire('Logged in with Google')
                 seterror('')
+                
             }).catch((error) => {
                 const errorMessage = error.message;
                 Swal.fire({
@@ -105,8 +116,8 @@ const Login = () => {
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input required type={checked ? "text" : "password" } placeholder="password" name='password' className="input input-bordered" />
-                                    <p className='mt-2'><input onClick={handlecheck}  type="checkbox" name="check" id="" /> Show password</p>
+                                    <input required type={checked ? "text" : "password"} placeholder="password" name='password' className="input input-bordered" />
+                                    <p className='mt-2'><input onClick={handlecheck} type="checkbox" name="check" id="" /> Show password</p>
                                     <label className="label">
                                         <div>Not have account? <Link className="link link-info" to={"/register"}>Register Now</Link></div>
                                     </label>
@@ -116,7 +127,7 @@ const Login = () => {
                                 </div>
                             </form>
                             <div className='flex justify-center'>
-                                <button  onClick={handlegooglelogin}><FaGoogle className='w-10 mt-10 h-10' /></button>
+                                <button onClick={handlegooglelogin}><FaGoogle className='w-10 mt-10 h-10' /></button>
                             </div>
                         </div>
                     </div>
