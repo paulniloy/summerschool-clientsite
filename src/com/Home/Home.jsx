@@ -24,11 +24,9 @@ const Home = () => {
 
     return (
         <div className={color ? 'bg-white text-black' : 'bg-gray-800 text-white'}>
-            <div data-aos="fade-left" className="hero min-h-screen  ">
+            <div className="hero min-h-screen  ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <Fade>
-                    <img src="https://wpe.hoffmanacademy.com/wp-content/uploads/2021/06/make-summer-of-music.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-                    </Fade>
+                    <img  src="https://wpe.hoffmanacademy.com/wp-content/uploads/2021/06/make-summer-of-music.jpg" className="max-w-sm rounded-lg shadow-2xl w-40" />
                     <div>
                         <h1 className="text-5xl font-bold">   <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'bold' }}>
                             Welcome to {' '}
@@ -45,11 +43,9 @@ const Home = () => {
                                 />
                             </span>
                         </h1></h1>
-                        <Bounce>
                             <p className="py-6 italic font-bold">Welcome to our Music Summer School! We are thrilled to have you join us for an incredible musical journey filled with learning, creativity, and inspiration. Our aim is to provide you with a supportive and enriching environment where you can explore your passion for music and further develop your skills.
 
                                 As you step into our vibrant musical community, you'll be greeted by a diverse group of fellow musicians who share your love for music. Whether you're an aspiring instrumentalist, vocalist, composer, or simply a music enthusiast, our program is designed to cater to all levels of expertise and interests.</p>
-                        </Bounce>
                     </div>
                 </div>
             </div>
@@ -59,8 +55,8 @@ const Home = () => {
             <Popclass></Popclass>
             <Headings heading={"Popular Instructors"} subheading={"Music Category"}></Headings>
             <Popinstructors></Popinstructors>
-            <div className='flex justify-center'>
-                <div data-aos="fade-up" className="stats shadow p-10">
+            {/* <div className='flex justify-center flex-col w-12/9'>
+                <div className="stats shadow p-10">
 
                     <div className="stat">
                         <div className="stat-figure text-secondary">
@@ -90,8 +86,8 @@ const Home = () => {
                     </div>
 
                 </div>
-            </div>
-            {/* <Headings heading={"Motivations"} subheading={"Motivate Yourself"}></Headings> */}
+            </div> */}
+            <Headings heading={"Motivations"} subheading={"Motivate Yourself"}></Headings>
             <Type></Type>
         </div>
     );

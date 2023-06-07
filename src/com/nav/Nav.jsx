@@ -36,7 +36,7 @@ const Nav = () => {
 
     const [isadmin,serisadmin] = useState(true);
     const navcenter =
-        <>
+        <div>
             <Link className='btn' to={"/"}>Home</Link>
             <Link className='btn' to={"/instructors"}>Instructors</Link>
             <Link className='btn' to={"/classes"}>Classes</Link>
@@ -44,6 +44,7 @@ const Nav = () => {
             {
                 isadmin ? <Link className='btn' to={"/admindash"}>Admin Dashboard</Link>  : ""
             }
+            
             <div>
                 {
                     loggeduser ? 
@@ -61,12 +62,13 @@ const Nav = () => {
             {
                 loggeduser ? <Link  to={"/login"} onClick={handlelogout} className='btn'>Logout</Link> : <Link className='btn' to={"/login"}>Login</Link>
             }
-        </>
+            <input onClick={istoggle} type="checkbox" className="toggle" checked={ischecked} />
+        </div>
 
 
     return (
         <div className='p-5 bg-gray-400 w-full z-10 home'>
-            <div className="navbar flex justify-between">
+            <div className="navbar md:flex md:justify-between">
                 <div className="w-[400px]">
                     <img className='w-40' src="https://media-s3-us-east-1.ceros.com/granicus/images/2021/05/06/7638e39ee1731aaaa0206ccaa876014e/logo-summerschool-series1.png" alt="Logo" />
                     <div className="dropdown visible md:invisible">
@@ -78,9 +80,8 @@ const Nav = () => {
                         </ul>
                     </div>
                 </div>
-                <div className=" gap-5 invisible md:visible">
+                <div className=" gap-5 flex flex-col invisible md:visible">
                     {navcenter}
-                <input onClick={istoggle} type="checkbox" className="toggle" checked={ischecked} />
                 </div>
             </div>
         </div>
