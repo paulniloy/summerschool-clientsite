@@ -35,7 +35,7 @@ const Nav = () => {
         })
     }
 
-    const [isadmin,serisadmin] = useState(false);
+    const [isadmin,serisadmin] = useState(true);
     const [isinstructor,setinstructor] = useState(true);
     const navcenter =
         <>

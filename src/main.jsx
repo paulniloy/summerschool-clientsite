@@ -62,7 +62,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admindash",
-    element: <Private><AdminDash></AdminDash></Private>,
+    element: <AdminDash></AdminDash>,
     children: [
       {
         path: '/admindash',

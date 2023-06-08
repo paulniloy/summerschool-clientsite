@@ -17,11 +17,13 @@ const AdminDash = () => {
             <Nav></Nav>
             <Headings heading={"Add a class"} subheading={"Music school class"}></Headings>
             <div className='flex justify-evenly gap-10 bg-gray-200'>
-            <Admincart></Admincart>
-            <Outlet></Outlet>
-            
-        </div>
-        <Footer></Footer>
+                <div className='justify-content-start'>
+                    <Admincart></Admincart>
+                </div>
+                <Outlet></Outlet>
+
+            </div>
+            <Footer></Footer>
         </div>
     );
 };
