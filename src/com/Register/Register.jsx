@@ -31,6 +31,13 @@ const Register = () => {
             })
             return;
         }
+        else if(data.password !== data.confirm){
+            return Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "Password and Confirm password are not same",
+            })
+        }
         else {
             registered(data.email, data.password)
                 .then((userCredential) => {
@@ -77,11 +84,11 @@ const Register = () => {
 
 
     const handlepassword = e => {
-        e.preventDefault()
-        const passed = e.target.value;
-        setpass(passed)
+        // const passed = e.target.value;
+        // console.log(e.target.value);
+        setpass(e.target.value)
         setletconfirm(true)
-        if (passed) {
+        if (e.target.value) {
             setconfirmdisabled(false)
         }
         else {
@@ -165,32 +172,32 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input required type="text" {...register("email")} placeholder="email" name='email' className="input input-bordered" />
+                                    <input required type="text" {...register("email", { required: true})} placeholder="email" name='email' className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
-                                    <input type="text" placeholder="name" {...register("name")} name='name' className="input input-bordered" />
+                                    <input type="text" placeholder="name" {...register("name", { required: true})} name='name' className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Picture</span>
                                     </label>
-                                    <input type="url" placeholder="url" {...register("photo")} name='photo' className="input input-bordered" />
+                                    <input type="url" placeholder="url" {...register("photo", { required: true})} name='photo' className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input required onChange={handlepassword} {...register("password")} type="password" placeholder="password" name='password' className="input input-bordered" />
+                                    <input required onChange={(handlepassword)} {...register("password", { required: true})} type="password" placeholder="password" name='password' className="input input-bordered" />
                                 </div>
-                                {/* <div className="form-control">
+                                <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Confirm Password</span>
                                     </label>
-                                    <input disabled={confirmdisabled} onKeyUp={handleconfirm} type="password" placeholder="password" name='confirm' className="input input-bordered" />
-                                </div> */}
+                                    <input type="password" placeholder="password" {...register("confirm", { required: true})} name='confirm' className="input input-bordered" />
+                                </div>
                                 <p>Already Have an account? <Link className="link link-info" to={"/login"}>Login</Link></p>
                                 <div className="form-control mt-6">
                                     <button className="btn btn-primary" disabled={confirm} type='submit'>Register</button>
