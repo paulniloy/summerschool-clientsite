@@ -30,6 +30,7 @@ const Nav = () => {
     const handlelogout = () => {
         logout()
         .then(()=>{
+            localStorage.removeItem('token')
             Swal.fire("Logged out successfully")
         })
     }

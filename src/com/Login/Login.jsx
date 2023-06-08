@@ -8,6 +8,7 @@ import { FaGoogle } from "react-icons/fa";
 // import axios from '../json/axios';
 // import API from '../json/axios';
 import { useForm } from "react-hook-form";
+import axios from 'axios';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -45,6 +46,13 @@ const Login = () => {
                 setsuccess('Successfully signed in');
                 Swal.fire('Sucessfully Logged in')
                 seterror('')
+                axios.post("http://localhost:3000/jwt", {
+                    email : data.email
+                })
+                .then(data=>{
+                    console.log(data);
+                    localStorage.setItem("token", data.data.token)
+                })
 
             })
             .catch((error) => {
@@ -67,7 +75,7 @@ const Login = () => {
                 const token = credential.accessToken;
                 const user = result.user;
                 const instructorsdata = {
-                    name : username, email : useremail, picture : photourl, role: "student" 
+                    name : username, email : useremail, picture : photourl, role: "student", roleB : ""
                 }
                 console.log(instructorsdata);
                 fetch("http://localhost:3000/instructors", {
@@ -80,6 +88,13 @@ const Login = () => {
                 navigate(from)
                 setsuccess('Successfully signed in');
                 Swal.fire('Logged in with Google')
+                axios.post("http://localhost:3000/jwt", {
+                    email : user.email
+                })
+                .then(data=>{
+                    console.log(data);
+                    localStorage.setItem("token", data.data.token)
+                })
                 seterror('')
                 
             }).catch((error) => {

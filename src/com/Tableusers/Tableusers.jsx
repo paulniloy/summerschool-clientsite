@@ -62,7 +62,6 @@ const Tableusers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>RoleB</th>
                             <th>Make Admin</th>
                             <th>Make Instructor</th>
                         </tr>
@@ -87,18 +86,19 @@ const Tableusers = () => {
                                     <td>{data.email}</td>
                                     <th>
                                         <p>{data.role}</p>
-                                    </th>
-                                    <th>
                                         <p>{data.roleB}</p>
                                     </th>
+                                    {/* <th>
+                                        <p>{data.roleB}</p>
+                                    </th> */}
                                     <th className='gap-5'>
                                         {
-                                            (data.role && data.role !== 'student') ? <button disabled className='btn btn-xl'>Make Admin</button>  : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
+                                            (data.role !== 'student') ? <button disabled className='btn btn-xl'>Make Admin</button>  : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
                                         }
                                     </th>
                                     <th>
                                         {
-                                            (data.role && data.role !== 'student') ? <button disabled className='btn btn-xl'>Make Instructor</button> : <button onClick={() => handlemakeinstructor(data._id)} className="btn btn-xl">Make Instructor</button>
+                                            (data.roleB !== '') ? <button disabled className='btn btn-xl'>Make Instructor</button> : <button onClick={() => handlemakeinstructor(data._id)} className="btn btn-xl">Make Instructor</button>
                                         }
                                     </th>
                                     {/* <th>

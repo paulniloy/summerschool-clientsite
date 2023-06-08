@@ -5,6 +5,7 @@ import { Authcontext } from '../Authprovider/Auth';
 import swal from 'sweetalert';
 import Swal from 'sweetalert2';
 import { useForm } from "react-hook-form";
+import axios from 'axios';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -34,7 +35,7 @@ const Register = () => {
             registered(data.email, data.password)
                 .then((userCredential) => {
                     const instructors = {
-                        name : data.name, picture : data.photo, email : data.email, role : "student", roleB : "student"
+                        name : data.name, picture : data.photo, email : data.email, role : "student", roleB : ""
                     }
                     const user = userCredential.user;
                     profileupdate(data.name, data.photo)
@@ -47,8 +48,17 @@ const Register = () => {
                     })
                     setsuccess('Successfully registered');
                     seterror('')
+                    axios.post("http://localhost:3000/jwt", {
+                    email : data.email
+                })
+                .then(data=>{
+                    console.log(data);
+                    
+                    localStorage.setItem("token", data.data.token)
                     Swal.fire('Successfully Registered and Logged in');
                     navigate("/");
+                })
+                    
                 })
                 .catch((error) => {
                     const errorCode = error.code;
