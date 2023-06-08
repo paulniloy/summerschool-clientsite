@@ -17,7 +17,7 @@ const Popclass = () => {
             {
                 classes.map(dt=>
                     <div className="card w-96 bg-yellow-400 p-5 text-black shadow-xl m-10">
-                    <figure><img className=' rounded-xl' src={dt.image} alt="Shoes" /></figure>
+                    <figure><img className='w-40 rounded-xl' src={dt.image} alt="Shoes" /></figure>
                     <div className="card-body">
                       <h2 className="card-title">
                         {dt.music_name}
