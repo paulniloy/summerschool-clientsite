@@ -28,6 +28,9 @@ import Manageuser from "./com/instructoruser/Manageuser";
 import Tableusers from "./com/Tableusers/Tableusers";
 import { useState } from "react";
 import { useContext } from "react";
+import Instructordash from "./com/Instructordash/Instructordash";
+import Manageclass from "./com/Manageclasses/Manageclass";
+import Addclasses from "./com/addclasses/Addclasses";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +74,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/admindash/bye",
-        element: <div>hello therer</div>
+        element: <Manageclass></Manageclass>
+      }
+    ]
+  },
+  {
+    path : "/instructordash",
+    element : <Instructordash></Instructordash>,
+    children : [
+      {
+        path: "/instructordash",
+        element : <Addclasses></Addclasses>
       }
     ]
   },
