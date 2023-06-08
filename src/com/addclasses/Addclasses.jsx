@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 
 const Addclasses = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, watch, isSubmitSuccessful, formState: { errors } } = useForm();     
 
     const onSubmit = data =>{
         // console.log(data.name, data.insname, data.price, data.insemail, data.classname, data.classimg, data.seat, data.activityone, data.activitytwo, data.activitythree);
@@ -21,6 +21,7 @@ const Addclasses = () => {
         .then((res)=>res.json())
         .then(data=>{
             console.log(data);
+            reset();
         })
     }
 
