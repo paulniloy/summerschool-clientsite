@@ -7,6 +7,7 @@ import Admincart from '../Admincart/Admincart';
 import Tableusers from '../Tableusers/Tableusers';
 import Nav from '../nav/Nav';
 import Footer from '../Footer/Footer';
+import Headings from '../Headings/Headings';
 
 const AdminDash = () => {
 
@@ -14,6 +15,7 @@ const AdminDash = () => {
     return (
         <div>
             <Nav></Nav>
+            <Headings heading={"Add a class"} subheading={"Music school class"}></Headings>
             <div className='flex justify-evenly gap-10 bg-gray-200'>
             <Admincart></Admincart>
             <Outlet></Outlet>
