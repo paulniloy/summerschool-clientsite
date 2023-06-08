@@ -26,7 +26,7 @@ const Home = () => {
         <div className={color ? 'bg-white text-black' : 'bg-gray-800 text-white'}>
             <div className="hero min-h-screen  ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img  src="https://wpe.hoffmanacademy.com/wp-content/uploads/2021/06/make-summer-of-music.jpg" className="max-w-sm rounded-lg shadow-2xl w-40" />
+                    <img  src="https://wpe.hoffmanacademy.com/wp-content/uploads/2021/06/make-summer-of-music.jpg" className="max-w-sm rounded-lg shadow-2xl w-40 md:w-full" />
                     <div>
                         <h1 className="text-5xl font-bold">   <h1 style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'bold' }}>
                             Welcome to {' '}

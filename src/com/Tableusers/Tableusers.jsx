@@ -46,7 +46,7 @@ const Tableusers = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+            refetch();
         })
     }
 
@@ -61,6 +61,7 @@ const Tableusers = () => {
                             <th>Picture</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Role</th>
                             <th>Make Admin</th>
                             <th>Make Instructor</th>
                         </tr>
@@ -83,9 +84,12 @@ const Tableusers = () => {
                                         {data.name}
                                     </td>
                                     <td>{data.email}</td>
+                                    <th>
+                                        <p>{data.role}</p>
+                                    </th>
                                     <th className='gap-5'>
                                         {
-                                            data.role ? "admin" : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
+                                            (data.role && data.role !== 'student') ? "admin" : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
                                         }
                                     </th>
                                     <th>

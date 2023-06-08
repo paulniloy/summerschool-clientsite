@@ -41,8 +41,9 @@ const Login = () => {
                 const token = credential.accessToken;
                 const user = result.user;
                 const instructorsdata = {
-                    name : username, email : useremail, picture : photourl 
+                    name : username, email : useremail, picture : photourl, role: "student" 
                 }
+                console.log(instructorsdata);
                 fetch("http://localhost:3000/instructors", {
                     method: "POST",
                     headers: {
