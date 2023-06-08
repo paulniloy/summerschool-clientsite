@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     title("Registartion")
     const [letconfirm, setletconfirm] = useState(false)
     const [confirmdisabled, setconfirmdisabled] = useState(true)
@@ -64,6 +64,7 @@ const Register = () => {
                     localStorage.setItem("token", data.data.token)
                     Swal.fire('Successfully Registered and Logged in');
                     navigate("/");
+                    reset()
                 })
                     
                 })
@@ -77,6 +78,7 @@ const Register = () => {
                     })
                     seterror(errorMessage);
                     setsuccess('');
+                    reset();
                 });
         }
         

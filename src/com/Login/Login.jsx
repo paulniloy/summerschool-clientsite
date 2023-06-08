@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { google, signin, username, useremail, photourl } = useContext(Authcontext);
 
     const [checked, setchecked] = useState(false);
@@ -52,6 +52,7 @@ const Login = () => {
                 .then(data=>{
                     console.log(data);
                     localStorage.setItem("token", data.data.token)
+                    reset();
                 })
 
             })
@@ -108,6 +109,7 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 seterror(errorMessage);
                 setsuccess('');
+                reset();
             });
     }
 
@@ -136,6 +138,7 @@ const Login = () => {
                 })
                 seterror(errorMessage);
                 setsuccess('');
+                reset();
             })
     }
 
