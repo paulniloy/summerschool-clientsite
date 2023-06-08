@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from "../../../firebase.config";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, deleteUser, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 export const Authcontext = createContext(null);
 const Auth = ({children}) => {
@@ -17,6 +17,8 @@ const Auth = ({children}) => {
         setloader(true);
         return signOut(auth);
     }
+
+   
 
     
     const profileupdate = (name, url) => {
@@ -40,7 +42,7 @@ const Auth = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const register = (email, password) => {
+    const registered = (email, password) => {
         setloader(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
@@ -69,7 +71,7 @@ const Auth = ({children}) => {
 
 
     const authinfo = {
-        google, useremail, color, setcolor, signin, register, profileupdate, loggeduser, username, photourl, logout, loader
+        google, useremail, color, setcolor, signin, registered, profileupdate, loggeduser, username, photourl, logout, loader
     }
 
     return (

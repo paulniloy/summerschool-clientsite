@@ -7,8 +7,10 @@ import Swal from 'sweetalert2';
 import { FaGoogle } from "react-icons/fa";
 // import axios from '../json/axios';
 // import API from '../json/axios';
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { google, signin, username, useremail, photourl } = useContext(Authcontext);
 
     const [checked, setchecked] = useState(false);
@@ -33,6 +35,30 @@ const Login = () => {
 
 
     const navigate = useNavigate();
+
+    const onSubmit = data => {
+        console.log(data);
+        signin(data.email, data.password)
+            .then((userCredential) => {
+                navigate(from)
+                const user = userCredential.user;
+                setsuccess('Successfully signed in');
+                Swal.fire('Sucessfully Logged in')
+                seterror('')
+
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.message,
+                })
+                seterror(errorMessage);
+                setsuccess('');
+            })
+    };
 
     const handlegooglelogin = () => {
         google()
@@ -106,18 +132,18 @@ const Login = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
-                            <form onSubmit={handlelogin}>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="form-control">
                                     <label className="label">
                                         <span required className="label-text">Email</span>
                                     </label>
-                                    <input type="text" placeholder="email" name='email' className="input input-bordered" />
+                                    <input type="text" placeholder="email" {...register("email")} name='email' className="input input-bordered" />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input required type={checked ? "text" : "password"} placeholder="password" name='password' className="input input-bordered" />
+                                    <input required type={checked ? "text" : "password"} placeholder="password" {...register("password")} name='password' className="input input-bordered" />
                                     <p className='mt-2'><input onClick={handlecheck} type="checkbox" name="check" id="" /> Show password</p>
                                     <label className="label">
                                         <div>Not have account? <Link className="link link-info" to={"/register"}>Register Now</Link></div>

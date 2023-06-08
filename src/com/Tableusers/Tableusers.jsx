@@ -40,15 +40,15 @@ const Tableusers = () => {
                 refetch();
         })
     }
-    const handledelete = id =>{
-        fetch(`http://localhost:3000/users/delete/${id}`,{
-            method : "DELETE"
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            refetch();
-        })
-    }
+    // const handledelete = id =>{
+    //     fetch(`http://localhost:3000/users/delete/${id}`,{
+    //         method : "DELETE"
+    //     })
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //         refetch();
+    //     })
+    // }
 
     console.log(admindash);
     return (
@@ -62,6 +62,7 @@ const Tableusers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>RoleB</th>
                             <th>Make Admin</th>
                             <th>Make Instructor</th>
                         </tr>
@@ -87,19 +88,22 @@ const Tableusers = () => {
                                     <th>
                                         <p>{data.role}</p>
                                     </th>
+                                    <th>
+                                        <p>{data.roleB}</p>
+                                    </th>
                                     <th className='gap-5'>
                                         {
-                                            (data.role && data.role !== 'student') ? "admin" : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
+                                            (data.role && data.role !== 'student') ? <button disabled className='btn btn-xl'>Make Admin</button>  : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
                                         }
                                     </th>
                                     <th>
                                         {
-                                            data.roleB ? "instructor" : <button onClick={() => handlemakeinstructor(data._id)} className="btn btn-xl">Make Instructor</button>
+                                            (data.role && data.role !== 'student') ? <button disabled className='btn btn-xl'>Make Instructor</button> : <button onClick={() => handlemakeinstructor(data._id)} className="btn btn-xl">Make Instructor</button>
                                         }
                                     </th>
-                                    <th>
+                                    {/* <th>
                                         <button className='btn btn-xl' onClick={()=>handledelete(data._id)}>Delete</button>
-                                    </th>
+                                    </th> */}
                                 </tr>
                             )
                         }
