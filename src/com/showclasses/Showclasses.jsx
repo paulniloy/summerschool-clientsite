@@ -29,7 +29,7 @@ const Showclasses = () => {
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">{data.music_name}</h2>
-                            <p className='font-bold'>Status : Approved</p>
+                            <p className='font-bold'>Status : {data.status}</p>
                             <p className='font-bold'>Price : ${data.price}</p>
                             <p className='font-bold'>Students : {data.students}</p>
                             <p className='font-bold'>Available Seats : {data.available_seats}</p>

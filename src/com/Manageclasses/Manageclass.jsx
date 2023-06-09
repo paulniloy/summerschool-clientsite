@@ -32,32 +32,20 @@ const Manageclass = () => {
     }
 
     const handledata = (data) => {
-        const classdata = {
-            instructor_name: data.instructor_name, instructor_email: data.instructor_email,
-            music_name: data.music_name, image: data.image, available_seats: data.available_seats, activities: data.activities, price: data.price, students: data.students, status: "approved"
-        }
-        fetch(`http://localhost:3000/addtoclasses`, {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(classdata)
-        })
-            .then((res) => res.json())
-            .then(data => {
-                refetch();
-            })
-
-        fetch(`http://localhost:3000/pendingdelete/${data._id}`, {
-            method: "DELETE",
-            headers: {
-                'content-type': 'application/json'
+        console.log(data._id);
+        // const classdata = {
+        //     instructor_name: data.instructor_name, instructor_email: data.instructor_email,
+        //     music_name: data.music_name, image: data.image, available_seats: data.available_seats, activities: data.activities, price: data.price, students: data.students, status: "approved"
+        // }
+        fetch(`http://localhost:3000/addtoclasses/${data._id}`,{
+            method : "PATCH",
+            headers : {
+                'content-type' : 'application/json'
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                refetch();
-            })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+        
     }
 
 
