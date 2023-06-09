@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from "react-hook-form";
+import { Authcontext } from '../Authprovider/Auth';
 
 const Addclasses = () => {
+
+    const {username, useremail} = useContext(Authcontext);
+
     const { register, handleSubmit, reset, watch, isSubmitSuccessful, formState: { errors } } = useForm();     
 
     const onSubmit = data =>{
         // console.log(data.name, data.insname, data.price, data.insemail, data.classname, data.classimg, data.seat, data.activityone, data.activitytwo, data.activitythree);
         const classdata = {
-            instructor_name : data.insname, instructor_email : data.insemail,
+            instructor_name : username, instructor_email : useremail,
             music_name : data.classname, image : data.classimg, available_seats : data.seat, activities : [data.activityone, data.activitytwo, data.activitythree], price : data.price, students : data.students, status : "pending"
         }
 
@@ -32,10 +36,10 @@ const Addclasses = () => {
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-lg bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
-                                <input type="text" placeholder="instructor's name" {...register("insname")}  className="input input-bordered" />
+                                <input defaultValue={username} disabled type="text" placeholder="instructor's name" {...register("insname")}  className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <input type="text" placeholder="instructor's email" {...register("insemail")}  className="input input-bordered" />
+                                <input defaultValue={useremail} disabled type="text" placeholder="instructor's email" {...register("insemail")}  className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <input type="text" placeholder="class name" {...register("classname")}  className="input input-bordered" />

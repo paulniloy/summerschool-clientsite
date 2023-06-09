@@ -10,11 +10,8 @@ import Login from "./com/Login/Login";
 import Home from "./com/Home/Home";
 import Register from "./com/Register/Register";
 import Auth, { Authcontext } from "./com/Authprovider/Auth";
-import About from "./com/About/About";
-import Private from "./com/Privateroute/Private";
 import Class from "./com/Classes/Class";
 import Instructor from "./com/Instructors/Instructor";
-import Dash from "./com/Dashboard/AdminDash";
 import {
   useQuery,
   useMutation,
@@ -30,7 +27,9 @@ import { useState } from "react";
 import { useContext } from "react";
 import Instructordash from "./com/Instructordash/Instructordash";
 import Manageclass from "./com/Manageclasses/Manageclass";
+import Instructordashhome from "./com/Instructordashhome/Instructordashhome";
 import Addclasses from "./com/addclasses/Addclasses";
+import Showclasses from "./com/showclasses/Showclasses";
 
 const router = createBrowserRouter([
   {
@@ -84,7 +83,15 @@ const router = createBrowserRouter([
     children : [
       {
         path: "/instructordash",
+        element : <div className='flex justify-center items-center text-4xl italic font-bold'>Instructor's panel</div>
+      },
+      {
+        path: "/instructordash/addclasses",
         element : <Addclasses></Addclasses>
+      },
+      {
+        path : "instructordash/showclasses",
+        element : <Showclasses></Showclasses>
       }
     ]
   },
