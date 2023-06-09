@@ -62,7 +62,7 @@ const Manageclass = () => {
 
 
     return (
-        <div className='flex flex-col md:flex-row gap-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
             {
                 pending.map(data => <div className={`text-center card w-96 ${data.available_seats == 0 ? 'bg-red-600' : 'bg-base-200'} shadow-xl`}>
                     <figure><img className='w-40' src={data.image} alt="Shoes" /></figure>
