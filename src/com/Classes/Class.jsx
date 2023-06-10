@@ -1,15 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import title from '../../Hooks/title';
 import { useQuery } from 'react-query';
 import { Authcontext } from '../Authprovider/Auth';
+import Isstudent from '../varifystudent/Isstudent';
 
 const Class = () => {
 
-    const {useremail} = useContext(Authcontext)
+    const [isStudent] = Isstudent();
+
+    const {useremail} = useContext(Authcontext);
+    // const [isdisable, setisdisable] = useState(false)
 
     title("Classes")
 
-    const { data: show = [], resfetch } = useQuery({
+    const { data: show = [], refetch } = useQuery({
         queryKey: 'showclass',
         queryFn: async () => {
             const res = await fetch('http://localhost:3000/allclasses')
@@ -17,9 +21,31 @@ const Class = () => {
         }
     })
 
-    // const handlepost = (id) =>{
+    const handlepost = (id) =>{
+
+        const bodydata = {
+            enrolled : "pending"
+        }
+        fetch(`http://localhost:3000/setpending/${id}`,{
+            method : "PATCH",
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(bodydata)
+        }).then(res=>res.json()).then(data=>{
+           refetch();
+            console.log(data)
+        })
+
+
+        // fetch( `http://localhost:3000/postpending/${id}`,{
+        //     method : "DELETE"
+        // }).then(res=>res.json()).then(data=>{
+        //     console.log(data)
+        //     setisdisable(true);
+        // });
         
-    // }
+    }
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center m-10'>
@@ -30,7 +56,7 @@ const Class = () => {
                             <img className='h-56' src={data.image} alt="" />
                             <h2 className="card-title">{data.music_name}</h2>
                             <p>
-                                Students : {data.students}
+                                Students : {data.students == "" ? "0" : data.students}
                             </p>
                             <p>
                                 Price : ${data.price}
@@ -40,7 +66,9 @@ const Class = () => {
                             </p>
 
                             <div className="card-actions justify-end">
-                                <button onClick={()=>handlepost(data._id)} className="btn">Buy Now</button>
+                                {
+                                    isStudent ? <button disabled={data.enrolled == "pending" ? true : false} onClick={()=>handlepost(data._id)} className="btn">Add to cart</button> : ""
+                                }
                             </div>
                         </div>
                     </div>

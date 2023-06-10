@@ -34,6 +34,7 @@ import Update from "./com/updateclass/Update";
 import Studentdash from "./com/studentdas/Studentdash";
 import Myclasses from "./com/Myclasses/Myclasses";
 import Myenrolled from "./com/myenrolled/Myenrolled";
+import Payment from "./com/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -119,6 +120,10 @@ const router = createBrowserRouter([
       {
         path : "/studentdash/myenrolled",
         element : <Myenrolled></Myenrolled>
+      },
+      {
+        path : "/studentdash/payment",
+        element : <Payment></Payment>
       }
     ]
   },

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { Authcontext } from '../Authprovider/Auth';
+import Swal from 'sweetalert2';
 
 const Addclasses = () => {
 
@@ -12,7 +13,7 @@ const Addclasses = () => {
         // console.log(data.name, data.insname, data.price, data.insemail, data.classname, data.classimg, data.seat, data.activityone, data.activitytwo, data.activitythree);
         const classdata = {
             instructor_name : username, instructor_email : useremail,
-            music_name : data.classname, image : data.classimg, available_seats : data.seat, activities : [data.activityone, data.activitytwo, data.activitythree], price : data.price, status : "pending", enrolled : 0, feedback: ""
+            music_name : data.classname, image : data.classimg, available_seats : data.seat, activities : [data.activityone, data.activitytwo, data.activitythree], price : data.price, status : "pending", enrolled : "0", feedback: "", students : ""
         }
 
         fetch('http://localhost:3000/pending',{
@@ -24,6 +25,11 @@ const Addclasses = () => {
         })
         .then((res)=>res.json())
         .then(data=>{
+            Swal.fire(
+                'Added Class Successfully!',
+                'Go to myclasses to see the added class',
+                'success'
+              )
             console.log(data);
             reset();
         })
