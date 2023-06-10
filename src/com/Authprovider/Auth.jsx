@@ -56,6 +56,7 @@ const Auth = ({children}) => {
 
     useEffect(()=>{
         const unsubscribe =  onAuthStateChanged(auth, (user)=>{
+            setloader(false);
             setloggeduser(user)
             console.log(user.displayName, user.photoURL);
             setloggeduser(user);
@@ -63,19 +64,6 @@ const Auth = ({children}) => {
             setusername(user.displayName);
             setphotourl(user.photoURL);
             setuseremail(user.email);
-            if(user){
-                // axios.post("http://localhost:3000/jwt", {
-                //     email : user.email
-                // })
-                // .then(data=>{
-                //     console.log(data);
-                //     localStorage.setItem("token", data.data.token)
-                // })
-            }
-            else{
-                localStorage.removeItem("token")
-            }
-            setloader(false);
         })
         return ()=> {
            unsubscribe();

@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { Authcontext } from "../Authprovider/Auth";
 import { useQuery } from "react-query";
+import axios from "axios";
 
 const Isinstructor = () => {
-    const {useremail} = useContext(Authcontext);
+    const {loggeduser} = useContext(Authcontext);
     const {data: isInstructor, refetch, isloading} = useQuery({
-        queryKey : ['isinstructor', useremail],
+        queryKey : ['isinstructor', loggeduser?.email],
         queryFn : async ()=>{
-            const res = await fetch(`http://localhost:3000/user/instructor/${useremail}`)
-            return res.json()
+            const res = await axios.get(`http://localhost:3000/user/instructor/${loggeduser?.email}`)
+            return res.data.roleB
         }
     })
     return [isInstructor, isloading];

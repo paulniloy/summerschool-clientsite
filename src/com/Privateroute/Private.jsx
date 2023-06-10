@@ -11,13 +11,13 @@ const Private = ({children}) => {
 
 
     if(loader){
-         return <div>loading</div>
+         return <progress className="progress w-56"></progress>
     }
 
     if(loggeduser){
         return children;
     }
-    return <Navigate state={{from: location}} replace to={"/login"}></Navigate>;
+    return <Navigate to={"/login"}></Navigate>;
 };
 
 export default Private;

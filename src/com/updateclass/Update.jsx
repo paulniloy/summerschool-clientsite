@@ -5,10 +5,13 @@ import { useForm } from "react-hook-form";
 import { Authcontext } from '../Authprovider/Auth';
 import axios from 'axios';
 import { useLoaderData, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import title from '../../Hooks/title';
 
 
 
 const Update = () => {
+    title('Update')
     const [previous, setprevious] = useState([])
 
     const {id} = useParams();
@@ -39,7 +42,14 @@ const Update = () => {
             body : JSON.stringify(classdata)
         })
         .then(res=>res.json())
-        .then(data=>console.log(data))
+        .then(data=>{
+            Swal.fire(
+                'Updated done!',
+                'Go to my classes to see the updated file',
+                'success'
+              )
+            console.log(data)
+        })
 }
 
 

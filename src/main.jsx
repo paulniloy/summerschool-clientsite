@@ -27,14 +27,14 @@ import { useState } from "react";
 import { useContext } from "react";
 import Instructordash from "./com/Instructordash/Instructordash";
 import Manageclass from "./com/Manageclasses/Manageclass";
-import Instructordashhome from "./com/Instructordashhome/Instructordashhome";
 import Addclasses from "./com/addclasses/Addclasses";
 import Showclasses from "./com/showclasses/Showclasses";
 import Update from "./com/updateclass/Update";
 import Studentdash from "./com/studentdas/Studentdash";
 import Myclasses from "./com/Myclasses/Myclasses";
 import Myenrolled from "./com/myenrolled/Myenrolled";
-import Payment from "./com/Payment/Payment";
+import Payment from "./com/Payment/Payment"
+import Private from "./com/Privateroute/Private";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/classes",
-        element: <Class></Class>
+        element: <Private><Class></Class></Private>
       },
       {
         path: "/instructors",

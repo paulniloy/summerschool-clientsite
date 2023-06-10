@@ -6,8 +6,10 @@ import Headings from '../Headings/Headings';
 import Instructordashhome from '../Instructordashhome/Instructordashhome';
 import Addclasses from '../addclasses/Addclasses';
 import Instructorscart from '../Instructorcart/Instructorscart';
+import title from '../../Hooks/title';
 
 const Instructordash = () => {
+    title('Instructor Dashboard')
     return (
         <div>
             <Nav></Nav>

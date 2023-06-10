@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import Headings from '../Headings/Headings';
 
 const Instructor = () => {
-    title("Instructora")
+    title("Instructors Page")
 
     const { data: instructors = [] } = useQuery({
         queryKey: "instructorpage",

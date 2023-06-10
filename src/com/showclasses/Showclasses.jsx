@@ -5,21 +5,36 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const Showclasses = () => {
-    const { useremail } = useContext(Authcontext);
-    const [classes, setclasses] = useState([]);
+    const { useremail, loader } = useContext(Authcontext);
+    // const [classes, setclasses] = useState([]);
     const token = localStorage.getItem('token');
     console.log(token);
 
 
-    useEffect(()=>{
-        axios.get(`http://localhost:3000/userclasses?email=${useremail}`,{
-            headers : {
-                authorization : `bearer ${token}`
-            }
-        })
-        .then(data=>{
-            setclasses(data.data)})
-    },[])
+
+    const { data: classes = [], refetch } = useQuery({
+        queryKey: ['class', useremail],
+        enabled: !loader,
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:3000/userclasses?email=${useremail}`, {
+                headers: {
+                    authorization: `bearer ${token}`
+                }
+            })
+            return res.json();
+        }
+    })
+
+
+    // useEffect(()=>{
+    //     axios.get(`http://localhost:3000/userclasses?email=${useremail}`,{
+    //         headers : {
+    //             authorization : `bearer ${token}`
+    //         }
+    //     })
+    //     .then(data=>{
+    //         setclasses(data.data)})
+    // },[])
 
     // const { data: classes = [], refetch } = useQuery({
     //     queryKey: ['classesdata', useremail],

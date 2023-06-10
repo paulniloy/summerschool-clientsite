@@ -12,7 +12,7 @@ import axios from 'axios';
 
 const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const { google, signin, username, useremail, photourl } = useContext(Authcontext);
+    const { google, signin, username, useremail, photourl, setloader } = useContext(Authcontext);
 
     const [checked, setchecked] = useState(false);
 
@@ -52,6 +52,7 @@ const Login = () => {
                 .then(data=>{
                     console.log(data);
                     localStorage.setItem("token", data.data.token)
+                    setloader(false);
                     reset();
                 })
 
