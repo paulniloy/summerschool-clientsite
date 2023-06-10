@@ -25,7 +25,7 @@ const Popinstructors = () => {
                         <h3 className='italic font-medium'>Price : ${ins.price}</h3>
                         <h3 className='italic font-medium'>Category : {ins.music_name}</h3>
                         <h3 className='italic font-medium'>Vacancy : {ins.available_seats}</h3>
-                        <h3 className='italic font-medium'>Students :</h3>
+                        <h3 className='italic font-medium'>Students : {ins.students}</h3>
                         <h3 className='italic font-medium'>Total students : {ins.students}</h3>
                     </div>
                   </div>

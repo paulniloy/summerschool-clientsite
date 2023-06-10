@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Authcontext } from '../Authprovider/Auth';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Showclasses = () => {
     const { useremail } = useContext(Authcontext);
@@ -31,12 +32,14 @@ const Showclasses = () => {
                             <h2 className="card-title">{data.music_name}</h2>
                             <p className='font-bold'>Status : {data.status}</p>
                             <p className='font-bold'>Price : ${data.price}</p>
-                            <p className='font-bold'>Students : {data.students}</p>
+                            <p className='font-bold'>Students : {data.enrolled}</p>
                             <p className='font-bold'>Available Seats : {data.available_seats}</p>
                             {/* <p>{data.activities.map(activity=>
                                 <li>{activity}</li>
                                 )}</p>
                             */}
+
+                            <Link to={`/class/updateclass/${data._id}`}>Update</Link>
                         </div>
                     </div>)
             }

@@ -30,6 +30,7 @@ import Manageclass from "./com/Manageclasses/Manageclass";
 import Instructordashhome from "./com/Instructordashhome/Instructordashhome";
 import Addclasses from "./com/addclasses/Addclasses";
 import Showclasses from "./com/showclasses/Showclasses";
+import Update from "./com/updateclass/Update";
 
 const router = createBrowserRouter([
   {
@@ -90,10 +91,19 @@ const router = createBrowserRouter([
         element : <Addclasses></Addclasses>
       },
       {
-        path : "instructordash/showclasses",
+        path : "/instructordash/showclasses",
         element : <Showclasses></Showclasses>
       }
+      // {
+      //   path: "/instructordash/update",
+      //   element : <div>hello</div>
+      // }
     ]
+  },
+  {
+    path : "/class/updateclass/:id",
+    element : <Update></Update>,
+    // loader : ({params})=> fetch(`http://localhost:3000/getitems/${params.id}`)
   },
   {
     path: "*",

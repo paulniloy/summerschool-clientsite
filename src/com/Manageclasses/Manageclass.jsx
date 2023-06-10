@@ -44,7 +44,9 @@ const Manageclass = () => {
             }
         })
         .then(res=>res.json())
-        .then(data=>console.log(data))
+        .then(data=>{
+            refetch();}
+            )
         
     }
 

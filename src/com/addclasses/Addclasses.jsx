@@ -12,7 +12,7 @@ const Addclasses = () => {
         // console.log(data.name, data.insname, data.price, data.insemail, data.classname, data.classimg, data.seat, data.activityone, data.activitytwo, data.activitythree);
         const classdata = {
             instructor_name : username, instructor_email : useremail,
-            music_name : data.classname, image : data.classimg, available_seats : data.seat, activities : [data.activityone, data.activitytwo, data.activitythree], price : data.price, status : "pending"
+            music_name : data.classname, image : data.classimg, available_seats : data.seat, activities : [data.activityone, data.activitytwo, data.activitythree], price : data.price, status : "pending", enrolled : 0, feedback: ""
         }
 
         fetch('http://localhost:3000/pending',{
