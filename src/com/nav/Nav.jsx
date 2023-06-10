@@ -37,6 +37,7 @@ const Nav = () => {
 
     const [isadmin,serisadmin] = useState(true);
     const [isinstructor,setinstructor] = useState(true);
+    const [isstudent,setstudent] = useState(true);
     const navcenter =
         <>
             <Link className='btn' to={"/"}>Home</Link>
@@ -48,6 +49,10 @@ const Nav = () => {
             }
             {
                 isinstructor ? <Link className='btn' to={"/instructordash"}>Instructor Dashboard</Link>  : ""
+            }
+            {
+                 isstudent ? <Link className='btn' to={"/studentdash"}>Student Dashboard</Link> : ""
+
             }
             
             <div>

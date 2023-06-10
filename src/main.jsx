@@ -31,6 +31,9 @@ import Instructordashhome from "./com/Instructordashhome/Instructordashhome";
 import Addclasses from "./com/addclasses/Addclasses";
 import Showclasses from "./com/showclasses/Showclasses";
 import Update from "./com/updateclass/Update";
+import Studentdash from "./com/studentdas/Studentdash";
+import Myclasses from "./com/Myclasses/Myclasses";
+import Myenrolled from "./com/myenrolled/Myenrolled";
 
 const router = createBrowserRouter([
   {
@@ -94,16 +97,30 @@ const router = createBrowserRouter([
         path : "/instructordash/showclasses",
         element : <Showclasses></Showclasses>
       }
-      // {
-      //   path: "/instructordash/update",
-      //   element : <div>hello</div>
-      // }
     ]
   },
   {
     path : "/class/updateclass/:id",
     element : <Update></Update>,
     // loader : ({params})=> fetch(`http://localhost:3000/getitems/${params.id}`)
+  },
+  {
+    path : "/studentdash",
+    element : <Studentdash></Studentdash>,
+    children : [
+      {
+        path : "/studentdash",
+        element : <div className='flex justify-center items-center text-4xl italic font-bold'>Student's Panel</div>
+      },
+      {
+        path : "/studentdash/myclasses",
+        element : <Myclasses></Myclasses>
+      },
+      {
+        path : "/studentdash/myenrolled",
+        element : <Myenrolled></Myenrolled>
+      }
+    ]
   },
   {
     path: "*",

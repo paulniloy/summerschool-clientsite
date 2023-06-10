@@ -1,0 +1,22 @@
+import React from 'react';
+import Nav from '../nav/Nav';
+import Footer from '../Footer/Footer';
+import Studentcart from '../studentcart/Studentcart';
+import { Outlet } from 'react-router-dom';
+import Headings from '../Headings/Headings';
+
+const Studentdash = () => {
+    return (
+        <div>
+            <Nav></Nav>
+            <Headings heading={"Student"} subheading={"classes"}></Headings>
+            <div className='flex justify-evenly gap-10 bg-gray-200'>
+                <Studentcart></Studentcart>
+                <Outlet></Outlet>
+            </div>
+            <Footer></Footer>
+        </div>
+    );
+};
+
+export default Studentdash;

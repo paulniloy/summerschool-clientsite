@@ -22,7 +22,7 @@ const Update = () => {
     const { register, handleSubmit, reset, watch, isSubmitSuccessful, formState: { errors } } = useForm();
 
 
-    
+
     const onSubmit = data => {
         // console.log(data.name, data.insname, data.price, data.insemail, data.classname, data.classimg, data.seat, data.activityone, data.activitytwo, data.activitythree);
         const classdata = {
@@ -34,7 +34,7 @@ const Update = () => {
         fetch(`http://localhost:3000/update/${id}`,{
             method : "PATCH",
             headers : {
-                'content-type' : 'applicaion/json'
+                'content-type' : 'application/json'
             },
             body : JSON.stringify(classdata)
         })
