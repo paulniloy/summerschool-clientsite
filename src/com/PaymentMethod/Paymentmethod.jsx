@@ -4,8 +4,8 @@ import Payment from '../Payment/Payment';
 import { loadStripe } from '@stripe/stripe-js';
 import { useQuery } from 'react-query';
 
+const stripePromise = loadStripe(import.meta.env.VITE_payment);
 const Paymentmethod = () => {
-    const stripePromise = loadStripe(import.meta.env.VITE_payment);
 
     const { data: pay = [], refetch } = useQuery({
         queryKey: 'pay',
@@ -16,6 +16,7 @@ const Paymentmethod = () => {
     })
     const total = pay.reduce((sum,item)=>sum + parseInt(item.price),0)
     const price = parseFloat(total.toFixed(2))
+    console.log(typeof(price))
 
     return (
         <div className='m-5'>
