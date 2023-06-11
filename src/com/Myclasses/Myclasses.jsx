@@ -5,13 +5,13 @@ const Myclasses = () => {
     const { data: payment = [], refetch } = useQuery({
         queryKey: 'payment',
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/payment')
+            const res = await fetch('https://summerschool.vercel.app/payment')
             return res.json()
         }
     })
 
     const handledelete = (id)=>{
-        fetch(`http://localhost:3000/backnormal/${id}`,{
+        fetch(`https://summerschool.vercel.app/backnormal/${id}`,{
             method : "PATCH"
         }).then(res=>res.json()).then(data=>{
             refetch();

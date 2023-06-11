@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.54.0",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
     "dotenv": "^16.1.4",

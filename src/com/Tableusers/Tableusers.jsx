@@ -9,13 +9,13 @@ const Tableusers = () => {
     const { data: admindash = [], refetch } = useQuery({
         queryKey: ["isadmin"],
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/instructors')
+            const res = await fetch('https://summerschool.vercel.app/instructors')
             return res.json()
         }
     })
 
     const handlemakeadmin = (id) => {
-        fetch(`http://localhost:3000/instructors/makeadmin/${id}`, {
+        fetch(`https://summerschool.vercel.app/instructors/makeadmin/${id}`, {
             method: "PATCH",
             // headers: {
             //     "content-type": "application/json"
@@ -28,7 +28,7 @@ const Tableusers = () => {
         })
     }
     const handlemakeinstructor = (id) => {
-        fetch(`http://localhost:3000/instructors/makeinstructor/${id}`, {
+        fetch(`https://summerschool.vercel.app/instructors/makeinstructor/${id}`, {
             method: "PATCH",
             // headers: {
             //     "content-type": "application/json"
@@ -41,7 +41,7 @@ const Tableusers = () => {
         })
     }
     // const handledelete = id =>{
-    //     fetch(`http://localhost:3000/users/delete/${id}`,{
+    //     fetch(`https://summerschool.vercel.app/users/delete/${id}`,{
     //         method : "DELETE"
     //     })
     //     .then(res=>res.json())
@@ -86,19 +86,18 @@ const Tableusers = () => {
                                     <td>{data.email}</td>
                                     <th>
                                         <p>{data.role}</p>
-                                        <p>{data.roleB}</p>
                                     </th>
                                     {/* <th>
                                         <p>{data.roleB}</p>
                                     </th> */}
                                     <th className='gap-5'>
                                         {
-                                            (data.role !== 'student') ? <button disabled className='btn btn-xl'>Make Admin</button>  : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
+                                            ((data.role !== 'student') && (data.role !== 'instructor')) ? <button disabled className='btn btn-xl'>Make Admin</button>  : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
                                         }
                                     </th>
                                     <th>
                                         {
-                                            (data.roleB !== '') ? <button disabled className='btn btn-xl'>Make Instructor</button> : <button onClick={() => handlemakeinstructor(data._id)} className="btn btn-xl">Make Instructor</button>
+                                            ((data.role !== 'student') && (data.role !== 'admin')) ? <button disabled className='btn btn-xl'>Make Instructor</button> : <button onClick={() => handlemakeinstructor(data._id)} className="btn btn-xl">Make Instructor</button>
                                         }
                                     </th>
                                     {/* <th>

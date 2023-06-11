@@ -6,7 +6,7 @@ const Myenrolled = () => {
     const { data: pending = [], refetch } = useQuery({
         queryKey: 'myenroll',
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/getenrolled')
+            const res = await fetch('https://summerschool.vercel.app/getenrolled')
             return res.json()
         }
     })

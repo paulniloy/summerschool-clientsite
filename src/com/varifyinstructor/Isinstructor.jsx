@@ -8,8 +8,8 @@ const Isinstructor = () => {
     const {data: isInstructor, refetch, isloading} = useQuery({
         queryKey : ['isinstructor', loggeduser?.email],
         queryFn : async ()=>{
-            const res = await axios.get(`http://localhost:3000/user/instructor/${loggeduser?.email}`)
-            return res.data.roleB
+            const res = await axios.get(`https://summerschool.vercel.app/user/instructor/${loggeduser?.email}`)
+            return res.data.role
         }
     })
     return [isInstructor, isloading];

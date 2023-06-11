@@ -42,6 +42,8 @@ const Nav = () => {
     const [isInstructor] = Isinstructor();
     const [isStudent] = Isstudent();
     console.log(isInstructor);
+    console.log(isAdmin);
+    console.log(isStudent);
     const navcenter =
         <>
             <Link className='btn' to={"/"}>Home</Link>

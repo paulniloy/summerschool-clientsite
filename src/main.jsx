@@ -35,6 +35,7 @@ import Myclasses from "./com/Myclasses/Myclasses";
 import Myenrolled from "./com/myenrolled/Myenrolled";
 import Payment from "./com/Payment/Payment"
 import Private from "./com/Privateroute/Private";
+import Paymentmethod from "./com/PaymentMethod/Paymentmethod";
 
 const router = createBrowserRouter([
   {
@@ -103,7 +104,7 @@ const router = createBrowserRouter([
   {
     path : "/class/updateclass/:id",
     element : <Update></Update>,
-    // loader : ({params})=> fetch(`http://localhost:3000/getitems/${params.id}`)
+    // loader : ({params})=> fetch(`https://summerschool.vercel.app/getitems/${params.id}`)
   },
   {
     path : "/studentdash",
@@ -123,7 +124,7 @@ const router = createBrowserRouter([
       },
       {
         path : "/studentdash/payment",
-        element : <Payment></Payment>
+        element : <Paymentmethod></Paymentmethod>
       }
     ]
   },

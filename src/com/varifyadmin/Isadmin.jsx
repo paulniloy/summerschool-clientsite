@@ -8,7 +8,7 @@ const Isadmin = () => {
     const {data: isAdmin={}, refetch, isloading} = useQuery({
         queryKey : ['admin', loggeduser?.email],
         queryFn : async ()=>{
-            const res = await axios.get(`http://localhost:3000/user/admin/${loggeduser?.email}`)
+            const res = await axios.get(`https://summerschool.vercel.app/user/admin/${loggeduser?.email}`)
             return res.data.role
         }
     })

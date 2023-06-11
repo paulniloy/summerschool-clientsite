@@ -16,7 +16,7 @@ const Showclasses = () => {
         queryKey: ['class', useremail],
         enabled: !loader,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:3000/userclasses?email=${useremail}`, {
+            const res = await fetch(`https://summerschool.vercel.app/userclasses?email=${useremail}`, {
                 headers: {
                     authorization: `bearer ${token}`
                 }
@@ -27,7 +27,7 @@ const Showclasses = () => {
 
 
     // useEffect(()=>{
-    //     axios.get(`http://localhost:3000/userclasses?email=${useremail}`,{
+    //     axios.get(`https://summerschool.vercel.app/userclasses?email=${useremail}`,{
     //         headers : {
     //             authorization : `bearer ${token}`
     //         }
@@ -38,7 +38,7 @@ const Showclasses = () => {
 
     // const { data: classes = [], refetch } = useQuery({
     //     queryKey: ['classesdata', useremail],
-    //     queryFn: async () => await fetch(`http://localhost:3000/userclasses?email=${useremail}`)
+    //     queryFn: async () => await fetch(`https://summerschool.vercel.app/userclasses?email=${useremail}`)
     //         .then(res => res.json())
     // })
 

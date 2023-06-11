@@ -10,7 +10,7 @@ const Studentdash = () => {
         <div>
             <Nav></Nav>
             <Headings heading={"Student"} subheading={"Manage classes"}></Headings>
-            <div className='flex justify-evenly gap-10 bg-gray-200'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-10 bg-gray-200'>
                 <Studentcart></Studentcart>
                 <Outlet></Outlet>
             </div>
