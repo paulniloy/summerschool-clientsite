@@ -16,7 +16,7 @@ const Update = () => {
 
     const {id} = useParams();
     useEffect(()=>{
-        axios.get(`https://summerschool.vercel.app/getitem/${id}`)
+        axios.get(`http://localhost:3000/getitem/${id}`)
         .then(res=>setprevious(res.data));
     },[])
     console.log(previous);
@@ -34,7 +34,7 @@ const Update = () => {
         console.log(classdata);
         console.log(id);
 
-        fetch(`https://summerschool.vercel.app/update/${id}`,{
+        fetch(`http://localhost:3000/update/${id}`,{
             method : "PATCH",
             headers : {
                 'content-type' : 'application/json'

@@ -7,7 +7,7 @@ const Manageclass = () => {
     // const [pending, setpending] = useState([]);
 
     // useEffect(()=>{
-    //     axios.get("https://summerschool.vercel.app/getpending")
+    //     axios.get("http://localhost:3000/getpending")
     //     .then(res=>{
     //         setpending(res.data);
     //     })
@@ -18,7 +18,7 @@ const Manageclass = () => {
     const { data: pending = [], refetch } = useQuery({
         queryKey: ['classs'],
         queryFn: async () => {
-            const res = await fetch('https://summerschool.vercel.app/getpending')
+            const res = await fetch('http://localhost:3000/getpending')
             return res.json();
         }
     })
@@ -28,7 +28,7 @@ const Manageclass = () => {
             denieddata, status : "denied"
         }
 
-        fetch(`https://summerschool.vercel.app/feedbacksend/${data}`, {
+        fetch(`http://localhost:3000/feedbacksend/${data}`, {
             method: "PATCH",
             headers : {
                 'content-type' : 'application/json'
@@ -52,7 +52,7 @@ const Manageclass = () => {
         //     instructor_name: data.instructor_name, instructor_email: data.instructor_email,
         //     music_name: data.music_name, image: data.image, available_seats: data.available_seats, activities: data.activities, price: data.price, students: data.students, status: "approved"
         // }
-        fetch(`https://summerschool.vercel.app/addtoclasses/${data._id}`, {
+        fetch(`http://localhost:3000/addtoclasses/${data._id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

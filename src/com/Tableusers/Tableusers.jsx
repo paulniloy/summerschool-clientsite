@@ -9,13 +9,13 @@ const Tableusers = () => {
     const { data: admindash = [], refetch } = useQuery({
         queryKey: ["isadmin"],
         queryFn: async () => {
-            const res = await fetch('https://summerschool.vercel.app/instructors')
+            const res = await fetch('http://localhost:3000/instructors')
             return res.json()
         }
     })
 
     const handlemakeadmin = (id) => {
-        fetch(`https://summerschool.vercel.app/instructors/makeadmin/${id}`, {
+        fetch(`http://localhost:3000/instructors/makeadmin/${id}`, {
             method: "PATCH",
             // headers: {
             //     "content-type": "application/json"
@@ -28,7 +28,7 @@ const Tableusers = () => {
         })
     }
     const handlemakeinstructor = (id) => {
-        fetch(`https://summerschool.vercel.app/instructors/makeinstructor/${id}`, {
+        fetch(`http://localhost:3000/instructors/makeinstructor/${id}`, {
             method: "PATCH",
             // headers: {
             //     "content-type": "application/json"
@@ -41,7 +41,7 @@ const Tableusers = () => {
         })
     }
     // const handledelete = id =>{
-    //     fetch(`https://summerschool.vercel.app/users/delete/${id}`,{
+    //     fetch(`http://localhost:3000/users/delete/${id}`,{
     //         method : "DELETE"
     //     })
     //     .then(res=>res.json())

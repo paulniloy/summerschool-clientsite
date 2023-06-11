@@ -46,7 +46,7 @@ const Login = () => {
                 setsuccess('Successfully signed in');
                 Swal.fire('Sucessfully Logged in')
                 seterror('')
-                axios.post("https://summerschool.vercel.app/jwt", {
+                axios.post("http://localhost:3000/jwt", {
                     email : data.email
                 })
                 .then(data=>{
@@ -80,7 +80,7 @@ const Login = () => {
                     name : username, email : useremail, picture : photourl, role: "student", roleB : ""
                 }
                 console.log(instructorsdata);
-                fetch("https://summerschool.vercel.app/instructors", {
+                fetch("http://localhost:3000/instructors", {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -90,7 +90,7 @@ const Login = () => {
                 navigate(from)
                 setsuccess('Successfully signed in');
                 Swal.fire('Logged in with Google')
-                axios.post("https://summerschool.vercel.app/jwt", {
+                axios.post("http://localhost:3000/jwt", {
                     email : user.email
                 })
                 .then(data=>{

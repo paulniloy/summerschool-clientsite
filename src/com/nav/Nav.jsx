@@ -28,7 +28,6 @@ const Nav = () => {
 
 
     const { loggeduser, logout, username, photourl } = useContext(Authcontext);
-    console.log(photourl, username, loggeduser);
 
     const handlelogout = () => {
         logout()
@@ -41,9 +40,6 @@ const Nav = () => {
     const [isAdmin] = Isadmin();
     const [isInstructor] = Isinstructor();
     const [isStudent] = Isstudent();
-    console.log(isInstructor);
-    console.log(isAdmin);
-    console.log(isStudent);
     const navcenter =
         <>
             <Link className='btn' to={"/"}>Home</Link>

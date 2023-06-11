@@ -9,7 +9,7 @@ const Myenrolled = () => {
     const { data: pending = [], refetch } = useQuery({
         queryKey: ['myenroll', loggeduser?.email],
         queryFn: async () => {
-            const res = await fetch(`https://summerschool.vercel.app/getpaidclasses?email=${loggeduser?.email}`)
+            const res = await fetch(`http://localhost:3000/getpaidclasses?email=${loggeduser?.email}`)
             return res.json()
         }
     })

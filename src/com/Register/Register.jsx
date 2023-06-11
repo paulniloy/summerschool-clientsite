@@ -46,7 +46,7 @@ const Register = () => {
                     }
                     const user = userCredential.user;
                     profileupdate(data.name, data.photo)
-                    fetch("https://summerschool.vercel.app/instructors", {
+                    fetch("http://localhost:3000/instructors", {
                         method : "POST",
                         headers : {
                             'content-type' : 'application/json'
@@ -55,7 +55,7 @@ const Register = () => {
                     })
                     setsuccess('Successfully registered');
                     seterror('')
-                    axios.post("https://summerschool.vercel.app/jwt", {
+                    axios.post("http://localhost:3000/jwt", {
                     email : data.email
                 })
                 .then(data=>{
@@ -137,7 +137,7 @@ const Register = () => {
                     }
                     const user = userCredential.user;
                     profileupdate(name, picture)
-                    fetch("https://summerschool.vercel.app/instructors", {
+                    fetch("http://localhost:3000/instructors", {
                         method : "POST",
                         headers : {
                             'content-type' : 'application/json'

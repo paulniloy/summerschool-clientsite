@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from 'react-query';
+import { Authcontext } from '../Authprovider/Auth';
+import Swal from 'sweetalert2';
 
 const Myclasses = () => {
+
+    const {loggeduser} = useContext(Authcontext)
+
     const { data: payment = [], refetch } = useQuery({
-        queryKey: 'payment',
+        queryKey: ['payment', loggeduser?.email],
         queryFn: async () => {
-            const res = await fetch('https://summerschool.vercel.app/payment')
+            const res = await fetch(`http://localhost:3000/pendingdata?email=${loggeduser?.email}`)
             return res.json()
         }
     })
 
     const handledelete = (id)=>{
-        fetch(`https://summerschool.vercel.app/backnormal/${id}`,{
-            method : "PATCH"
+        fetch(`http://localhost:3000/backnormal/${id}`,{
+            method : "DELETE"
         }).then(res=>res.json()).then(data=>{
+            Swal.fire(
+                'Removed from Cart',
+                'Removed Successfully!',
+                'success'
+            )
             refetch();
-            console.log(data)})
+    })
     }
 
 

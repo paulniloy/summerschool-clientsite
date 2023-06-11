@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../Authprovider/Auth';
 import Swal from 'sweetalert2';
+import { useQuery } from 'react-query';
 
 const Payment = ({ price, data }) => {
     const stripe = useStripe();
@@ -11,9 +12,11 @@ const Payment = ({ price, data }) => {
     const [clientSecret, setClientSecret] = useState("");
     const { loggeduser } = useContext(Authcontext);
 
+    const {refetch} = useQuery();
+
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("https://summerschool.vercel.app/create-payment-intent", {
+        fetch("http://localhost:3000/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ price }),
@@ -83,48 +86,42 @@ const Payment = ({ price, data }) => {
             },
         )
         if (paymentIntent) {
-            console.log('payment done');
-            const paymentinfo = {
-                name: loggeduser?.displayName,
-                email: loggeduser?.email,
-                transaction_id: paymentIntent.id,
-                price,
-                quantity: data.length,
-                items: data.map(item => item._id),
-                items_name: data.map(item => item.music_name),
-                enrolled : 'successful'
-            }
-            fetch('https://summerschool.vercel.app/paidclasses', {
-                method: "POST",
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(paymentinfo)
-            }).then(res => res.json()).then(data => {
 
-                Swal.fire(
-                    'Payment Done',
-                    'Selected Classes Enrolled Done',
-                    'success'
-                )
-            })
-            fetch(`https://summerschool.vercel.app/paidclasses?email=${loggeduser?.email}`,{
+            Swal.fire(
+                'Payment Successful!',
+                'You have purchased selected items!',
+                'success'
+            )
+            const paymentinfo = {
+                name : loggeduser?.displayName,
+                email : loggeduser?.email,
+                transaction_id : paymentIntent.id,
+                price,
+                quantity : data.length,
+                items : data.map(item=> item._id),
+                items_name : data.map(item=>item.music_name)
+            }
+            fetch(`http://localhost:3000/paidclasses`, {
+                method : "POST",
+                headers : {
+                    'content-type' : 'application/json'
+                },
+                body : JSON.stringify(paymentinfo)
+            }).then(res=>res.json()).then(data=>{
+                refetch();
+                console.log(data)})
+            fetch(`http://localhost:3000/removepending?email=${loggeduser?.email}`,{
                 method : "PATCH",
                 headers : {
                     'content-type' : 'application/json'
                 },
                 body : JSON.stringify()
             }).then(res=>res.json()).then(data=>{
+                refetch();
                 console.log(data);
             })
         }
     };
-
-
-
-    // useEffect(()=>{
-    //     fetch()
-    // },[])
 
     return (
         <div>

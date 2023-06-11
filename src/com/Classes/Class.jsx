@@ -3,12 +3,13 @@ import title from '../../Hooks/title';
 import { useQuery } from 'react-query';
 import { Authcontext } from '../Authprovider/Auth';
 import Isstudent from '../varifystudent/Isstudent';
+import Swal from 'sweetalert2';
 
 const Class = () => {
 
     const [isStudent] = Isstudent();
 
-    const {useremail} = useContext(Authcontext);
+    const { loggeduser } = useContext(Authcontext);
     // const [isdisable, setisdisable] = useState(false)
 
     title("Classes")
@@ -16,36 +17,63 @@ const Class = () => {
     const { data: show = [], refetch } = useQuery({
         queryKey: 'showclass',
         queryFn: async () => {
-            const res = await fetch('https://summerschool.vercel.app/allclasses')
+            const res = await fetch('http://localhost:3000/allclasses')
             return res.json()
         }
     })
 
-    const handlepost = (id) =>{
+    const handlepost = (data) => {
 
-        const bodydata = {
-            enrolled : "pending",
-            username : useremail
+        // const bodydata = {
+        //     enrolled : "pending",
+        //     username : useremail
+        // }
+        // fetch(`http://localhost:3000/setpending/${data._id}`,{
+        //     method : "PATCH",
+        //     headers : {
+        //         'content-type' : 'application/json'
+        //     },
+        //     body : JSON.stringify(bodydata)
+        // }).then(res=>res.json()).then(data=>{
+        //    refetch();
+        //     console.log(data)
+        // })
+
+
+        const pendingdata = {
+            enrolled: "pending",
+            enrolledby: loggeduser?.email,
+            item: data.music_name,
+            price: data.price,
+            image: data.image
         }
-        fetch(`https://summerschool.vercel.app/setpending/${id}`,{
-            method : "PATCH",
-            headers : {
-                'content-type' : 'application/json'
+        console.log(pendingdata);
+
+        fetch(`http://localhost:3000/settedpending`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
             },
-            body : JSON.stringify(bodydata)
-        }).then(res=>res.json()).then(data=>{
-           refetch();
+            body: JSON.stringify(pendingdata)
+        }).then(res => res.json()).then(data => {
+            refetch();
+
+            Swal.fire(
+                'Added to Cart!',
+                'Added Successfully!',
+                'success'
+            )
             console.log(data)
         })
 
 
-        // fetch( `https://summerschool.vercel.app/postpending/${id}`,{
+        // fetch( `http://localhost:3000/postpending/${id}`,{
         //     method : "DELETE"
         // }).then(res=>res.json()).then(data=>{
         //     console.log(data)
         //     setisdisable(true);
         // });
-        
+
     }
 
     return (
@@ -68,7 +96,7 @@ const Class = () => {
 
                             <div className="card-actions justify-end">
                                 {
-                                    isStudent ? <button disabled={data.enrolled == "pending" ? true : false} onClick={()=>handlepost(data._id)} className="btn">Add to cart</button> : ""
+                                    isStudent ? <button disabled={data.enrolled == "pending" ? true : false} onClick={() => handlepost(data)} className="btn">Add to cart</button> : ""
                                 }
                             </div>
                         </div>
