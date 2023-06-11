@@ -24,7 +24,8 @@ const Class = () => {
     const handlepost = (id) =>{
 
         const bodydata = {
-            enrolled : "pending"
+            enrolled : "pending",
+            username : useremail
         }
         fetch(`https://summerschool.vercel.app/setpending/${id}`,{
             method : "PATCH",
@@ -48,7 +49,7 @@ const Class = () => {
     }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center m-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center m-10'>
             {
                 show.map(data =>
                     <div className="card w-96 bg-red-400 text-black">

@@ -1,8 +1,9 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import { Authcontext } from '../Authprovider/Auth';
+import Swal from 'sweetalert2';
 
-const Payment = ({ price }) => {
+const Payment = ({ price, data }) => {
     const stripe = useStripe();
     const elements = useElements();
     const token = localStorage.getItem('token')
@@ -13,15 +14,16 @@ const Payment = ({ price }) => {
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         fetch("https://summerschool.vercel.app/create-payment-intent", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ price }),
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ price }),
         })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data.clientSecret);
-            setClientSecret(data.clientSecret)});
-      }, []);
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data.clientSecret);
+                setClientSecret(data.clientSecret)
+            });
+    }, []);
     // useEffect(() => {
     //     // Create PaymentIntent as soon as the page loads
     //     fetch("/create-payment-intent", {
@@ -79,7 +81,50 @@ const Payment = ({ price }) => {
                     },
                 },
             },
-        )};
+        )
+        if (paymentIntent) {
+            console.log('payment done');
+            const paymentinfo = {
+                name: loggeduser?.displayName,
+                email: loggeduser?.email,
+                transaction_id: paymentIntent.id,
+                price,
+                quantity: data.length,
+                items: data.map(item => item._id),
+                items_name: data.map(item => item.music_name),
+                enrolled : 'successful'
+            }
+            fetch('https://summerschool.vercel.app/paidclasses', {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(paymentinfo)
+            }).then(res => res.json()).then(data => {
+
+                Swal.fire(
+                    'Payment Done',
+                    'Selected Classes Enrolled Done',
+                    'success'
+                )
+            })
+            fetch(`https://summerschool.vercel.app/paidclasses?email=${loggeduser?.email}`,{
+                method : "PATCH",
+                headers : {
+                    'content-type' : 'application/json'
+                },
+                body : JSON.stringify()
+            }).then(res=>res.json()).then(data=>{
+                console.log(data);
+            })
+        }
+    };
+
+
+
+    // useEffect(()=>{
+    //     fetch()
+    // },[])
 
     return (
         <div>

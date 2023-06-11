@@ -21,7 +21,7 @@ const Paymentmethod = () => {
     return (
         <div className='m-5'>
             <Elements stripe={stripePromise}>
-                <Payment price={price}></Payment>
+                <Payment price={price} data={pay}></Payment>
             </Elements>
                 <div className='bg-base-200 w-1/2 rounded-xl p-5'>
                     <h2 className='font-bold text-blue-600'>Total Fee : <span className='font-medium italic text-red-600'>${total}</span></h2>
