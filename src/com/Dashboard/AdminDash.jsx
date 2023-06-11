@@ -16,7 +16,7 @@ const AdminDash = () => {
         <div>
             <Nav></Nav>
             <Headings heading={"Add a class"} subheading={"Music school class"}></Headings>
-            <div className='flex justify-evenly gap-10 bg-gray-200'>
+            <div className='flex flex-col md:flex-row justify-evenly gap-10 bg-gray-200'>
                 <div className='justify-content-start'>
                     <Admincart></Admincart>
                 </div>

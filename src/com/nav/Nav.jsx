@@ -57,10 +57,10 @@ const Nav = () => {
 
             }
 
-                </>
+        </>
 
-                const navend = 
-                <>
+    const navend =
+        <>
             <div>
                 {
                     loggeduser ?
@@ -79,7 +79,7 @@ const Nav = () => {
                 loggeduser ? <Link to={"/login"} onClick={handlelogout} className='btn'>Logout</Link> : <Link className='btn' to={"/login"}>Login</Link>
             }
             <input onClick={istoggle} type="checkbox" className="toggle" checked={ischecked} />
-                </>
+        </>
 
 
     return (
@@ -90,8 +90,15 @@ const Nav = () => {
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="z-10 menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                           {navcenter}
+                        <ul tabIndex={0} className="gap-5 z-10 menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <div className='gap-10'>
+                                <div>
+                                    {navcenter}
+                                </div>
+                                <div>
+                                    {navend}
+                                </div>
+                            </div>
                             {/* <li><a>Item 1</a></li>
                             <li>
                                 <a>Parent</a>

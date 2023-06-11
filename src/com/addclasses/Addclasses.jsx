@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { Authcontext } from '../Authprovider/Auth';
 import Swal from 'sweetalert2';
-
+import { RiFileAddFill } from "react-icons/ri";
 const Addclasses = () => {
 
     const {username, useremail} = useContext(Authcontext);
@@ -72,7 +72,7 @@ const Addclasses = () => {
                                 <input required type="text" placeholder="activitythree" {...register("activitythree")}  className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Add Class</button>
+                                <button className="btn btn-primary"><RiFileAddFill />Add Class</button>
                             </div>
                         </form>
                     </div>

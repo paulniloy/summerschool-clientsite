@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Bounce } from 'react-awesome-reveal';
 import { useQuery } from 'react-query';
+import { RiUserSettingsFill, RiUserStarFill } from "react-icons/ri";
 
 const Tableusers = () => {
 
@@ -92,12 +93,12 @@ const Tableusers = () => {
                                     </th> */}
                                     <th className='gap-5'>
                                         {
-                                            ((data.role !== 'student') && (data.role !== 'instructor')) ? <button disabled className='btn btn-xl'>Make Admin</button>  : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl">Make Admin</button>
+                                            ((data.role !== 'student') && (data.role !== 'instructor')) ? <div className='flex justify-center'><RiUserStarFill className='w-5 h-5' /></div>  : <button onClick={() => handlemakeadmin(data._id)} className="btn btn-xl"><RiUserSettingsFill className='w-5 h-5' /> Make Admin</button>
                                         }
                                     </th>
                                     <th>
                                         {
-                                            ((data.role !== 'student') && (data.role !== 'admin')) ? <button disabled className='btn btn-xl'>Make Instructor</button> : <button onClick={() => handlemakeinstructor(data._id)} className="btn btn-xl">Make Instructor</button>
+                                            ((data.role !== 'student') && (data.role !== 'admin')) ? <div className='flex justify-center'><RiUserStarFill className='w-5 h-5' /></div> : <button onClick={() => handlemakeinstructor(data._id)} className="btn btn-xl"><RiUserStarFill className='w-5 h-5' /> Make Instructor</button>
                                         }
                                     </th>
                                     {/* <th>

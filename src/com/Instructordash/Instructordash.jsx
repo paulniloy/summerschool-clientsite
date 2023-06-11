@@ -14,7 +14,7 @@ const Instructordash = () => {
         <div>
             <Nav></Nav>
             <Headings heading={"Instructors Panel"} subheading={'hello'}></Headings>
-            <div className='flex justify-evenly bg-base-200'>
+            <div className='flex flex-col md:flex-row justify-evenly bg-base-200'>
                 <Instructorscart></Instructorscart>
                 <Outlet></Outlet>
             </div>

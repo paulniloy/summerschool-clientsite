@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { RiUserStarFill } from "react-icons/ri";
 
 const Popinstructors = () => {
     const {data: instructors=[]} = useQuery({
@@ -20,6 +21,7 @@ const Popinstructors = () => {
                       <h2 className="card-title">
                         {ins.name}
                         <div className="badge badge-secondary">Popular</div>
+                        <RiUserStarFill/>
                       </h2>
                         <h3 className='italic font-medium'>Email : {ins.email}</h3>
                         <h3 className='italic font-medium'>Price : ${ins.price}</h3>
