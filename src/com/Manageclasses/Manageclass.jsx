@@ -38,8 +38,8 @@ const Manageclass = () => {
             .then(res => res.json())
             .then(data => {
                 Swal.fire(
-                    'Added Class Successfully!',
-                    'Go to myclasses to see the added class',
+                    'Denied Class',
+                    'Class Successfully Denieds',
                     'success'
                   )
                 refetch();
