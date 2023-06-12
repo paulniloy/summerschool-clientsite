@@ -4,8 +4,10 @@ import { useQuery } from 'react-query';
 import { Authcontext } from '../Authprovider/Auth';
 import Isstudent from '../varifystudent/Isstudent';
 import Swal from 'sweetalert2';
+import Headings from '../Headings/Headings';
 
 const Class = () => {
+    const { color } = useContext(Authcontext)
 
     const [isStudent] = Isstudent();
 
@@ -77,32 +79,35 @@ const Class = () => {
     }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center m-10'>
-            {
-                show.map(data =>
-                    <div className="card w-96 bg-red-400 text-black">
-                        <div className="card-body">
-                            <img className='h-56' src={data.image} alt="" />
-                            <h2 className="card-title">{data.music_name}</h2>
-                            <p>
-                                Students : {data.students == "" ? "0" : data.students}
-                            </p>
-                            <p>
-                                Price : ${data.price}
-                            </p>
-                            <p>
-                                AvailableSeats : {data.available_seats}
-                            </p>
+        <div>
+                <Headings heading={"Summer School"} subheading={"Classes"}></Headings>
+            <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center p-10 ${color ? 'bg-white text-black' : 'bg-gray-800 text-white'}`}>
+                {
+                    show.map(data =>
+                        <div className="card w-96 bg-gray-400 text-black">
+                            <div className="card-body">
+                                <img className='h-56' src={data.image} alt="" />
+                                <h2 className="card-title">{data.music_name}</h2>
+                                <p>
+                                    Students : {data.students == "" ? "0" : data.students}
+                                </p>
+                                <p>
+                                    Price : ${data.price}
+                                </p>
+                                <p>
+                                    AvailableSeats : {data.available_seats}
+                                </p>
 
-                            <div className="card-actions justify-end">
-                                {
-                                    isStudent ? <button disabled={data.enrolled == "pending" ? true : false} onClick={() => handlepost(data)} className="btn">Add to cart</button> : ""
-                                }
+                                <div className="card-actions justify-end">
+                                    {
+                                        isStudent ? <button disabled={data.enrolled == "pending" ? true : false} onClick={() => handlepost(data)} className="btn">Add to cart</button> : ""
+                                    }
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
-            }
+                    )
+                }
+            </div>
         </div>
     );
 };

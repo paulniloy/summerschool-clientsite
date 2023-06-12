@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const Showclasses = () => {
+    const {color} = useContext(Authcontext);
+
     const { useremail, loader } = useContext(Authcontext);
     // const [classes, setclasses] = useState([]);
     const token = localStorage.getItem('token');
@@ -41,10 +43,10 @@ const Showclasses = () => {
     //     queryFn: async () => await fetch(`https://summerschool.vercel.app/userclasses?email=${useremail}`)
     //         .then(res => res.json())
     // })
-
-
+    // className={color ? 'bg-white text-black' : 'bg-gray-800 text-white'}
+    
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-10`}>
             {
                 classes.map(data =>
                     <div className={`card w-96 ${data.available_seats == 0 ? "bg-red-400" : "bg-base-100"} ${data.status == 'denied' ? "bg-red-600" : ""} shadow-xl`}>
