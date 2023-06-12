@@ -39,7 +39,7 @@ const Addclasses = () => {
         <div>
             <div className="hero bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-lg bg-base-100">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-lg text-black bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <input required defaultValue={username} disabled type="text" placeholder="instructor's name" {...register("insname")}  className="input input-bordered" />
