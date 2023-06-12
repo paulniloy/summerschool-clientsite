@@ -4,7 +4,7 @@ import { Authcontext } from '../Authprovider/Auth';
 import Swal from 'sweetalert2';
 import { useQuery } from 'react-query';
 
-const Payment = ({ price, data }) => {
+const Payment = ({ price, data, reload }) => {
     const stripe = useStripe();
     const elements = useElements();
     const token = localStorage.getItem('token')
@@ -43,6 +43,7 @@ const Payment = ({ price, data }) => {
     //         });
     // }, []);
     // console.log(clientSecret);
+    console.log(data);
 
 
 
@@ -84,42 +85,47 @@ const Payment = ({ price, data }) => {
                     },
                 },
             },
-        )
-        if (!paymentIntent) {
-            return;
-        }
-        else{
-            Swal.fire(
-                'Payment Successful!',
-                'You have purchased selected items!',
-                'success'
             )
-            const paymentinfo = {
-                    name : loggeduser?.displayName,
-                    email : loggeduser?.email,
-                    transaction_id : paymentIntent.id,
-                    price,
-                    quantity : data.length,
-                    items : data.map(item=> item._id),
-                    items_name : data.map(item=>item.music_name)
-                }
-                await fetch(`https://summerschool.vercel.app/paidclasses`, {
-                    method : "POST",
-                    headers : {
-                        'content-type' : 'application/json'
-                    },
-                    body : JSON.stringify(paymentinfo)
-                }).then(res=>res.json()).then(data=>{
-                    refetch();
-                    console.log(data)})
-                await fetch(`https://summerschool.vercel.app/deletecartdata?email=${loggeduser?.email}`,{
-                    method : "DELETE",
-                }).then(res=>res.json()).then(data=>{
-                    refetch();
-                    console.log(data);
-                })
-        }
-    };
+            if(paymentIntent.status == "succeeded"){
+                Swal.fire(
+                    'Payment Successful!',
+                    'You have purchased selected items!',
+                    'success'
+                )
+                const paymentinfo = {
+                                name : loggeduser?.displayName,
+                                email : loggeduser?.email,
+                                transaction_id : paymentIntent.id,
+                                price,
+                                quantity : data.length,
+                                items : data.map(item=> item._id),
+                                items_name : data.map(item=>item.item)
+                            }
+                            await fetch(`https://summerschool.vercel.app/paidclasses`, {
+                                method : "POST",
+                                headers : {
+                                    'content-type' : 'application/json'
+                                },
+                                body : JSON.stringify(paymentinfo)
+                            }).then(res=>res.json()).then(data=>{
+                                refetch();
+                                console.log(data)})
+            }
+        };
+        // if (paymentIntent) {
+        //     return console.log(paymentIntent);
+        // }
+        // else{
+        //     console.log(paymentIntent);
+            
+        //     
+        //         await fetch(`https://summerschool.vercel.app/deletecartdata?email=${loggeduser?.email}`,{
+        //             method : "DELETE",
+        //         }).then(res=>res.json()).then(data=>{
+        //             refetch();
+        //             console.log(data);
+        //         })
+        // }
 
     return (
         <div>

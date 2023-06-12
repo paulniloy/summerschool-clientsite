@@ -13,10 +13,11 @@ const Myenrolled = () => {
             return res.json()
         }
     })
+    console.log(pending);
 
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+        <div className='grid grid-cols-1 md:grid-cols-1 gap-10'>
             {
                 pending.map(data =>
                     <div className="card w-96 bg-green-400 text-black-content">
