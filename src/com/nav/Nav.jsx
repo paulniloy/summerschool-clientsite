@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import Isadmin from '../varifyadmin/Isadmin';
 import Isinstructor from '../varifyinstructor/Isinstructor';
 import Isstudent from '../varifystudent/Isstudent';
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Nav = () => {
 
@@ -77,6 +78,9 @@ const Nav = () => {
             }
             {
                 loggeduser ? <Link to={"/login"} onClick={handlelogout} className='btn'>Logout</Link> : <Link className='btn' to={"/login"}>Login</Link>
+            }
+            {
+                ischecked ? <FaMoon className='w-5 h-10'/> : <FaSun className='w-5 h-10'/>
             }
             <input onClick={istoggle} type="checkbox" className="toggle" checked={ischecked} />
         </>

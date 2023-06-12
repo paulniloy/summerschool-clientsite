@@ -99,7 +99,8 @@ const Payment = ({ price, data, reload }) => {
                                 price,
                                 quantity : data.length,
                                 items : data.map(item=> item._id),
-                                items_name : data.map(item=>item.item)
+                                items_name : data.map(item=>item.item),
+                                enrolled : "successful"
                             }
                             await fetch(`https://summerschool.vercel.app/paidclasses`, {
                                 method : "POST",
@@ -110,6 +111,12 @@ const Payment = ({ price, data, reload }) => {
                             }).then(res=>res.json()).then(data=>{
                                 refetch();
                                 console.log(data)})
+                                await fetch(`https://summerschool.vercel.app/deletecartdata?email=${loggeduser?.email}`,{
+                                                method : "DELETE",
+                                            }).then(res=>res.json()).then(data=>{
+                                                refetch();
+                                                console.log(data);
+                                            })
             }
         };
         // if (paymentIntent) {
