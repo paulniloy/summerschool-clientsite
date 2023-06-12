@@ -17,7 +17,7 @@ const Class = () => {
     const { data: show = [], refetch } = useQuery({
         queryKey: 'showclass',
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/allclasses')
+            const res = await fetch('https://summerschool.vercel.app/allclasses')
             return res.json()
         }
     })
@@ -28,7 +28,7 @@ const Class = () => {
         //     enrolled : "pending",
         //     username : useremail
         // }
-        // fetch(`http://localhost:3000/setpending/${data._id}`,{
+        // fetch(`https://summerschool.vercel.app/setpending/${data._id}`,{
         //     method : "PATCH",
         //     headers : {
         //         'content-type' : 'application/json'
@@ -49,7 +49,7 @@ const Class = () => {
         }
         console.log(pendingdata);
 
-        fetch(`http://localhost:3000/settedpending`, {
+        fetch(`https://summerschool.vercel.app/settedpending`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -67,7 +67,7 @@ const Class = () => {
         })
 
 
-        // fetch( `http://localhost:3000/postpending/${id}`,{
+        // fetch( `https://summerschool.vercel.app/postpending/${id}`,{
         //     method : "DELETE"
         // }).then(res=>res.json()).then(data=>{
         //     console.log(data)

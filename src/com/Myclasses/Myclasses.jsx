@@ -10,13 +10,13 @@ const Myclasses = () => {
     const { data: payment = [], refetch } = useQuery({
         queryKey: ['payment', loggeduser?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:3000/pendingdata?email=${loggeduser?.email}`)
+            const res = await fetch(`https://summerschool.vercel.app/pendingdata?email=${loggeduser?.email}`)
             return res.json()
         }
     })
 
     const handledelete = (id)=>{
-        fetch(`http://localhost:3000/backnormal/${id}`,{
+        fetch(`https://summerschool.vercel.app/backnormal/${id}`,{
             method : "DELETE"
         }).then(res=>res.json()).then(data=>{
             Swal.fire(
@@ -30,12 +30,11 @@ const Myclasses = () => {
 
 
     return (
-        <div>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+            <div className='grid grid-cols-1 md:grid-cols-1 mx-auto gap-5'>
                 {
                     payment.map(data =>
                         <div className="card w-96 bg-red-400 text-black-content">
-                            <div className="card-body">
+                            <div className="card-body w-96">
                                 <img className='rounded-xl' src={data.image} alt="" />
                                 <h2 className="font-bold text-2xl">{data.music_name}</h2>
                                 <p className='font-medium'>Enrolled Status : {data.enrolled}</p>
@@ -46,7 +45,6 @@ const Myclasses = () => {
                         </div>)
                 }
             </div>
-        </div>
     );
 };
 

@@ -16,7 +16,7 @@ const Addclasses = () => {
             music_name : data.classname, image : data.classimg, available_seats : data.seat, activities : [data.activityone, data.activitytwo, data.activitythree], price : data.price, status : "pending", enrolled : "0", feedback: "", students : ""
         }
 
-        fetch('http://localhost:3000/pending',{
+        fetch('https://summerschool.vercel.app/pending',{
             method : "POST",
             headers : {
                 'content-type' : 'application/json'

@@ -6,7 +6,7 @@ const Popinstructors = () => {
     const {data: instructors=[]} = useQuery({
         queryKey : ["instructors"], 
         queryFn : async ()=>{
-            const res = await fetch('http://localhost:3000/popinstructors')
+            const res = await fetch('https://summerschool.vercel.app/popinstructors')
             return res.json()
         }
     })

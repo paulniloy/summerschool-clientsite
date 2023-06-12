@@ -1,16 +1,19 @@
 import { Elements } from '@stripe/react-stripe-js';
-import React from 'react';
+import React, { useContext } from 'react';
 import Payment from '../Payment/Payment';
 import { loadStripe } from '@stripe/stripe-js';
 import { useQuery } from 'react-query';
+import { Authcontext } from '../Authprovider/Auth';
 
 const stripePromise = loadStripe(import.meta.env.VITE_payment);
 const Paymentmethod = () => {
 
+    const {loggeduser} = useContext(Authcontext);
+
     const { data: pay = [], refetch } = useQuery({
-        queryKey: 'pay',
+        queryKey: ['pay', loggeduser?.email],
         queryFn: async () => {
-            const res = await fetch('http://localhost:3000/payment')
+            const res = await fetch(`https://summerschool.vercel.app/payment?email=${loggeduser?.email}`)
             return res.json()
         }
     })

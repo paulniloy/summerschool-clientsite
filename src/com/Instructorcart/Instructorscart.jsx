@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RiPlayListAddFill, RiVipCrown2Fill, RiUserStarFill } from "react-icons/ri";
-
 const Instructorscart = () => {
 
 
