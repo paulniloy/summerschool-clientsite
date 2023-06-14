@@ -100,7 +100,7 @@ const Class = () => {
 
                                 <div className="card-actions justify-end">
                                     {
-                                        isStudent ? <button disabled={data.enrolled == "pending" ? true : false} onClick={() => handlepost(data)} className="btn">Add to cart</button> : ""
+                                        isStudent ? <button disabled={data.enrolled == "pending" ? true : false} onClick={() => handlepost(data)} className="btn">Add to Purchase List</button> : ""
                                     }
                                 </div>
                             </div>

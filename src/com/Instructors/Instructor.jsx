@@ -20,12 +20,12 @@ const Instructor = () => {
 
 
     return (
-        <div>
+        <div className={`-m-100px ${color ? 'bg-base-200 text-black' : 'bg-gray-800 text-white'}`}>
             <Headings heading={"Instructors Details"} subheading={"Instructors"}></Headings>
-                <div className={`flex flex-col md:flex-row justify-center p-10 bg-base-200 gap-10 ${color ? 'bg-white text-black' : 'bg-gray-800 text-white'}`}>
+                <div className={`flex flex-col md:flex-row justify-center p-10  gap-10 ${color ? 'bg-base-200 text-black' : 'bg-gray-800 text-white'}`}>
                 {
                     instructors.map(instructor =>
-                        <div className="card w-96 bg-gray-400 shadow-xl">
+                        <div className="card w-96 bg-indigo-200 shadow-xl">
                             <figure className="px-10 pt-10">
                                 <img src={instructor.picture} alt="Shoes" className="rounded-xl w-20 h-20" />
                             </figure>

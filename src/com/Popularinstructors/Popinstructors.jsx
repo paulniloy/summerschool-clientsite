@@ -15,12 +15,12 @@ const Popinstructors = () => {
         <div className='grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center align-center m-10'>
             {
                 instructors.map(ins=>
-                    <div className="card w-96 bg-red-400 p-5 text-black shadow-xl">
+                    <div className="card w-96 bg-pink-400 p-5 text-black shadow-xl">
                     <figure><img className='w-40 h-40 rounded-xl' src={ins.image} alt="Shoes" /></figure>
                     <div className="card-body">
                       <h2 className="card-title">
                         {ins.name}
-                        <div className="badge badge-secondary">Popular</div>
+                        <div className="badge badge-primary">Popular</div>
                         <RiUserStarFill/>
                       </h2>
                         <h3 className='italic font-medium'>Email : {ins.email}</h3>
